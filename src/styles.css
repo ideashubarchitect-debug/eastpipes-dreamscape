@@ -31,44 +31,55 @@
   --color-brand: var(--brand);
   --color-brand-foreground: var(--brand-foreground);
   --color-ink: var(--ink);
+  --color-signal: var(--signal);
+  --color-paper: var(--paper);
+  --color-steel: var(--steel);
   --font-display: "Inter Tight", "Inter", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
 :root {
   --radius: 0.5rem;
 
-  /* East Pipes brand: deep navy + signature blue */
-  --brand: oklch(0.55 0.18 255);            /* signature blue */
+  /* East Pipes — cinematic palette */
+  --ink: oklch(0.16 0.035 252);           /* deep navy */
+  --ink-2: oklch(0.22 0.04 252);
+  --brand: oklch(0.58 0.18 252);          /* signature blue */
   --brand-foreground: oklch(0.99 0 0);
-  --ink: oklch(0.18 0.04 255);              /* deep navy */
+  --signal: oklch(0.84 0.13 210);         /* cyan signal accent */
+  --steel: oklch(0.72 0.02 250);
+  --paper: oklch(0.985 0.004 250);
 
-  --background: oklch(0.99 0.005 250);
-  --foreground: oklch(0.18 0.04 255);
+  --background: oklch(0.985 0.004 250);
+  --foreground: oklch(0.16 0.035 252);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.04 255);
+  --card-foreground: oklch(0.16 0.035 252);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.04 255);
-  --primary: oklch(0.18 0.04 255);
+  --popover-foreground: oklch(0.16 0.035 252);
+  --primary: oklch(0.16 0.035 252);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.96 0.01 250);
-  --secondary-foreground: oklch(0.18 0.04 255);
-  --muted: oklch(0.96 0.01 250);
-  --muted-foreground: oklch(0.5 0.02 255);
-  --accent: oklch(0.55 0.18 255);
+  --secondary: oklch(0.96 0.008 250);
+  --secondary-foreground: oklch(0.16 0.035 252);
+  --muted: oklch(0.96 0.008 250);
+  --muted-foreground: oklch(0.5 0.02 252);
+  --accent: oklch(0.58 0.18 252);
   --accent-foreground: oklch(0.99 0 0);
-  --destructive: oklch(0.6 0.22 27);
+  --destructive: oklch(0.62 0.22 27);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.92 0.01 250);
-  --input: oklch(0.92 0.01 250);
-  --ring: oklch(0.55 0.18 255);
+  --border: oklch(0.92 0.008 250);
+  --input: oklch(0.92 0.008 250);
+  --ring: oklch(0.58 0.18 252);
+
+  --ease-cinema: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 @layer base {
   * { border-color: var(--color-border); }
   html, body { background-color: var(--color-background); color: var(--color-foreground); }
   body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
-  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.022em; }
+  ::selection { background: var(--brand); color: white; }
 }
 
 @utility container-wide {
@@ -80,15 +91,68 @@
 
 @utility text-balance { text-wrap: balance; }
 
-/* Hero slide fade */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+@utility section-pad {
+  padding-block: 6rem;
+}
+
+@utility hairline {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-border), transparent);
+}
+
+/* ====== Motion ====== */
 @keyframes ken-burns {
   0% { transform: scale(1.05); }
   100% { transform: scale(1.18); }
 }
-.animate-ken-burns { animation: ken-burns 12s ease-out forwards; }
+.animate-ken-burns { animation: ken-burns 14s var(--ease-cinema) forwards; }
 
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(28px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.animate-fade-up { animation: fade-up 0.9s cubic-bezier(.2,.7,.2,1) both; }
+.animate-fade-up { animation: fade-up 0.9s var(--ease-cinema) both; }
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in { animation: fade-in 0.8s var(--ease-cinema) both; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 38s linear infinite; }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+.animate-pulse-dot { animation: pulse-dot 1.8s var(--ease-cinema) infinite; }
+
+/* Reveal-on-scroll */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s var(--ease-cinema), transform 0.9s var(--ease-cinema); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* Grain overlay used on dark heroes */
+@utility grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    background-image: radial-gradient(rgba(255,255,255,0.7) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+}
