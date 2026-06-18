@@ -74,8 +74,7 @@ export function Footer() {
                 <ul className="space-y-3">
                   {c.links.map((l) => (
                     <li key={l.label}>
-                      {/* @ts-expect-error tanstack typed paths */}
-                      <Link to={l.to} className="text-white/80 hover:text-signal transition">
+                      <Link to={l.to as string} className="text-white/80 hover:text-signal transition">
                         {l.label}
                       </Link>
                     </li>

@@ -90,8 +90,7 @@ export function PrimaryButton({
       {children} <ArrowRight className="h-4 w-4" />
     </span>
   );
-  // @ts-expect-error tanstack typed paths
-  if (to) return <Link to={to}>{inner}</Link>;
+  if (to) return <Link to={to as string}>{inner}</Link>;
   return <a href={href ?? "#"}>{inner}</a>;
 }
 
@@ -112,8 +111,7 @@ export function GhostButton({
       {children} <ArrowUpRight className="h-4 w-4" />
     </span>
   );
-  // @ts-expect-error tanstack typed paths
-  if (to) return <Link to={to}>{inner}</Link>;
+  if (to) return <Link to={to as string}>{inner}</Link>;
   return <span>{inner}</span>;
 }
 
