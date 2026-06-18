@@ -9,24 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ProductsRouteImport } from './routes/products'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as InvestorsIndexRouteImport } from './routes/investors.index'
+import { Route as InvestorsStockRouteImport } from './routes/investors.stock'
+import { Route as InvestorsReportsRouteImport } from './routes/investors.reports'
+import { Route as InvestorsGovernanceRouteImport } from './routes/investors.governance'
+import { Route as InvestorsContactRouteImport } from './routes/investors.contact'
+import { Route as InvestorsAnnouncementsRouteImport } from './routes/investors.announcements'
 
-const ProductsRoute = ProductsRouteImport.update({
-  id: '/products',
-  path: '/products',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -34,62 +28,119 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InvestorsIndexRoute = InvestorsIndexRouteImport.update({
+  id: '/investors/',
+  path: '/investors/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestorsStockRoute = InvestorsStockRouteImport.update({
+  id: '/investors/stock',
+  path: '/investors/stock',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestorsReportsRoute = InvestorsReportsRouteImport.update({
+  id: '/investors/reports',
+  path: '/investors/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestorsGovernanceRoute = InvestorsGovernanceRouteImport.update({
+  id: '/investors/governance',
+  path: '/investors/governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestorsContactRoute = InvestorsContactRouteImport.update({
+  id: '/investors/contact',
+  path: '/investors/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestorsAnnouncementsRoute = InvestorsAnnouncementsRouteImport.update({
+  id: '/investors/announcements',
+  path: '/investors/announcements',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/products': typeof ProductsRoute
+  '/investors/announcements': typeof InvestorsAnnouncementsRoute
+  '/investors/contact': typeof InvestorsContactRoute
+  '/investors/governance': typeof InvestorsGovernanceRoute
+  '/investors/reports': typeof InvestorsReportsRoute
+  '/investors/stock': typeof InvestorsStockRoute
+  '/investors/': typeof InvestorsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/products': typeof ProductsRoute
+  '/investors/announcements': typeof InvestorsAnnouncementsRoute
+  '/investors/contact': typeof InvestorsContactRoute
+  '/investors/governance': typeof InvestorsGovernanceRoute
+  '/investors/reports': typeof InvestorsReportsRoute
+  '/investors/stock': typeof InvestorsStockRoute
+  '/investors': typeof InvestorsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/products': typeof ProductsRoute
+  '/investors/announcements': typeof InvestorsAnnouncementsRoute
+  '/investors/contact': typeof InvestorsContactRoute
+  '/investors/governance': typeof InvestorsGovernanceRoute
+  '/investors/reports': typeof InvestorsReportsRoute
+  '/investors/stock': typeof InvestorsStockRoute
+  '/investors/': typeof InvestorsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/products'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/investors/announcements'
+    | '/investors/contact'
+    | '/investors/governance'
+    | '/investors/reports'
+    | '/investors/stock'
+    | '/investors/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/products'
-  id: '__root__' | '/' | '/about' | '/contact' | '/products'
+  to:
+    | '/'
+    | '/contact'
+    | '/investors/announcements'
+    | '/investors/contact'
+    | '/investors/governance'
+    | '/investors/reports'
+    | '/investors/stock'
+    | '/investors'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/investors/announcements'
+    | '/investors/contact'
+    | '/investors/governance'
+    | '/investors/reports'
+    | '/investors/stock'
+    | '/investors/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
-  ProductsRoute: typeof ProductsRoute
+  InvestorsAnnouncementsRoute: typeof InvestorsAnnouncementsRoute
+  InvestorsContactRoute: typeof InvestorsContactRoute
+  InvestorsGovernanceRoute: typeof InvestorsGovernanceRoute
+  InvestorsReportsRoute: typeof InvestorsReportsRoute
+  InvestorsStockRoute: typeof InvestorsStockRoute
+  InvestorsIndexRoute: typeof InvestorsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/products': {
-      id: '/products'
-      path: '/products'
-      fullPath: '/products'
-      preLoaderRoute: typeof ProductsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -99,15 +150,71 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/investors/': {
+      id: '/investors/'
+      path: '/investors'
+      fullPath: '/investors/'
+      preLoaderRoute: typeof InvestorsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investors/stock': {
+      id: '/investors/stock'
+      path: '/investors/stock'
+      fullPath: '/investors/stock'
+      preLoaderRoute: typeof InvestorsStockRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investors/reports': {
+      id: '/investors/reports'
+      path: '/investors/reports'
+      fullPath: '/investors/reports'
+      preLoaderRoute: typeof InvestorsReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investors/governance': {
+      id: '/investors/governance'
+      path: '/investors/governance'
+      fullPath: '/investors/governance'
+      preLoaderRoute: typeof InvestorsGovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investors/contact': {
+      id: '/investors/contact'
+      path: '/investors/contact'
+      fullPath: '/investors/contact'
+      preLoaderRoute: typeof InvestorsContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investors/announcements': {
+      id: '/investors/announcements'
+      path: '/investors/announcements'
+      fullPath: '/investors/announcements'
+      preLoaderRoute: typeof InvestorsAnnouncementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
-  ProductsRoute: ProductsRoute,
+  InvestorsAnnouncementsRoute: InvestorsAnnouncementsRoute,
+  InvestorsContactRoute: InvestorsContactRoute,
+  InvestorsGovernanceRoute: InvestorsGovernanceRoute,
+  InvestorsReportsRoute: InvestorsReportsRoute,
+  InvestorsStockRoute: InvestorsStockRoute,
+  InvestorsIndexRoute: InvestorsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

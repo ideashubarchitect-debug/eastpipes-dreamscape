@@ -8,7 +8,7 @@ import { kpis, disclosures, reports } from "@/data/ir";
 import { CtaBand } from "@/components/site/CtaBand";
 import { ArrowUpRight, Download, FileText, Users, Megaphone, LineChart } from "lucide-react";
 
-export const Route = createFileRoute("/investors")({
+export const Route = createFileRoute("/investors/")({
   head: () => ({
     meta: [
       { title: "Investor Relations — East Pipes (Tadawul: 1321)" },
