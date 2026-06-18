@@ -9,14 +9,39 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ProductsRouteImport } from './routes/products'
+import { Route as SustainabilityRouteImport } from './routes/sustainability'
+import { Route as SolutionsRouteImport } from './routes/solutions'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as NewsroomRouteImport } from './routes/newsroom'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as AboutRouteImport } from './routes/about'
+import { Route as CompanyRouteImport } from './routes/company'
+import { Route as CareersRouteImport } from './routes/careers'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as InvestorsIndexRouteImport } from './routes/investors.index'
+import { Route as InvestorsStockRouteImport } from './routes/investors.stock'
+import { Route as InvestorsReportsRouteImport } from './routes/investors.reports'
+import { Route as InvestorsGovernanceRouteImport } from './routes/investors.governance'
+import { Route as InvestorsContactRouteImport } from './routes/investors.contact'
+import { Route as InvestorsAnnouncementsRouteImport } from './routes/investors.announcements'
 
-const ProductsRoute = ProductsRouteImport.update({
-  id: '/products',
-  path: '/products',
+const SustainabilityRoute = SustainabilityRouteImport.update({
+  id: '/sustainability',
+  path: '/sustainability',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolutionsRoute = SolutionsRouteImport.update({
+  id: '/solutions',
+  path: '/solutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsroomRoute = NewsroomRouteImport.update({
+  id: '/newsroom',
+  path: '/newsroom',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -24,9 +49,14 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
+const CompanyRoute = CompanyRouteImport.update({
+  id: '/company',
+  path: '/company',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -34,48 +64,182 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InvestorsIndexRoute = InvestorsIndexRouteImport.update({
+  id: '/investors/',
+  path: '/investors/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestorsStockRoute = InvestorsStockRouteImport.update({
+  id: '/investors/stock',
+  path: '/investors/stock',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestorsReportsRoute = InvestorsReportsRouteImport.update({
+  id: '/investors/reports',
+  path: '/investors/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestorsGovernanceRoute = InvestorsGovernanceRouteImport.update({
+  id: '/investors/governance',
+  path: '/investors/governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestorsContactRoute = InvestorsContactRouteImport.update({
+  id: '/investors/contact',
+  path: '/investors/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestorsAnnouncementsRoute = InvestorsAnnouncementsRouteImport.update({
+  id: '/investors/announcements',
+  path: '/investors/announcements',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
+  '/company': typeof CompanyRoute
   '/contact': typeof ContactRoute
-  '/products': typeof ProductsRoute
+  '/newsroom': typeof NewsroomRoute
+  '/projects': typeof ProjectsRoute
+  '/solutions': typeof SolutionsRoute
+  '/sustainability': typeof SustainabilityRoute
+  '/investors/announcements': typeof InvestorsAnnouncementsRoute
+  '/investors/contact': typeof InvestorsContactRoute
+  '/investors/governance': typeof InvestorsGovernanceRoute
+  '/investors/reports': typeof InvestorsReportsRoute
+  '/investors/stock': typeof InvestorsStockRoute
+  '/investors/': typeof InvestorsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
+  '/company': typeof CompanyRoute
   '/contact': typeof ContactRoute
-  '/products': typeof ProductsRoute
+  '/newsroom': typeof NewsroomRoute
+  '/projects': typeof ProjectsRoute
+  '/solutions': typeof SolutionsRoute
+  '/sustainability': typeof SustainabilityRoute
+  '/investors/announcements': typeof InvestorsAnnouncementsRoute
+  '/investors/contact': typeof InvestorsContactRoute
+  '/investors/governance': typeof InvestorsGovernanceRoute
+  '/investors/reports': typeof InvestorsReportsRoute
+  '/investors/stock': typeof InvestorsStockRoute
+  '/investors': typeof InvestorsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
+  '/company': typeof CompanyRoute
   '/contact': typeof ContactRoute
-  '/products': typeof ProductsRoute
+  '/newsroom': typeof NewsroomRoute
+  '/projects': typeof ProjectsRoute
+  '/solutions': typeof SolutionsRoute
+  '/sustainability': typeof SustainabilityRoute
+  '/investors/announcements': typeof InvestorsAnnouncementsRoute
+  '/investors/contact': typeof InvestorsContactRoute
+  '/investors/governance': typeof InvestorsGovernanceRoute
+  '/investors/reports': typeof InvestorsReportsRoute
+  '/investors/stock': typeof InvestorsStockRoute
+  '/investors/': typeof InvestorsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/products'
+  fullPaths:
+    | '/'
+    | '/careers'
+    | '/company'
+    | '/contact'
+    | '/newsroom'
+    | '/projects'
+    | '/solutions'
+    | '/sustainability'
+    | '/investors/announcements'
+    | '/investors/contact'
+    | '/investors/governance'
+    | '/investors/reports'
+    | '/investors/stock'
+    | '/investors/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/products'
-  id: '__root__' | '/' | '/about' | '/contact' | '/products'
+  to:
+    | '/'
+    | '/careers'
+    | '/company'
+    | '/contact'
+    | '/newsroom'
+    | '/projects'
+    | '/solutions'
+    | '/sustainability'
+    | '/investors/announcements'
+    | '/investors/contact'
+    | '/investors/governance'
+    | '/investors/reports'
+    | '/investors/stock'
+    | '/investors'
+  id:
+    | '__root__'
+    | '/'
+    | '/careers'
+    | '/company'
+    | '/contact'
+    | '/newsroom'
+    | '/projects'
+    | '/solutions'
+    | '/sustainability'
+    | '/investors/announcements'
+    | '/investors/contact'
+    | '/investors/governance'
+    | '/investors/reports'
+    | '/investors/stock'
+    | '/investors/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
+  CareersRoute: typeof CareersRoute
+  CompanyRoute: typeof CompanyRoute
   ContactRoute: typeof ContactRoute
-  ProductsRoute: typeof ProductsRoute
+  NewsroomRoute: typeof NewsroomRoute
+  ProjectsRoute: typeof ProjectsRoute
+  SolutionsRoute: typeof SolutionsRoute
+  SustainabilityRoute: typeof SustainabilityRoute
+  InvestorsAnnouncementsRoute: typeof InvestorsAnnouncementsRoute
+  InvestorsContactRoute: typeof InvestorsContactRoute
+  InvestorsGovernanceRoute: typeof InvestorsGovernanceRoute
+  InvestorsReportsRoute: typeof InvestorsReportsRoute
+  InvestorsStockRoute: typeof InvestorsStockRoute
+  InvestorsIndexRoute: typeof InvestorsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/products': {
-      id: '/products'
-      path: '/products'
-      fullPath: '/products'
-      preLoaderRoute: typeof ProductsRouteImport
+    '/sustainability': {
+      id: '/sustainability'
+      path: '/sustainability'
+      fullPath: '/sustainability'
+      preLoaderRoute: typeof SustainabilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions': {
+      id: '/solutions'
+      path: '/solutions'
+      fullPath: '/solutions'
+      preLoaderRoute: typeof SolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/newsroom': {
+      id: '/newsroom'
+      path: '/newsroom'
+      fullPath: '/newsroom'
+      preLoaderRoute: typeof NewsroomRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -85,11 +249,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
+    '/company': {
+      id: '/company'
+      path: '/company'
+      fullPath: '/company'
+      preLoaderRoute: typeof CompanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -99,25 +270,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/investors/': {
+      id: '/investors/'
+      path: '/investors'
+      fullPath: '/investors/'
+      preLoaderRoute: typeof InvestorsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investors/stock': {
+      id: '/investors/stock'
+      path: '/investors/stock'
+      fullPath: '/investors/stock'
+      preLoaderRoute: typeof InvestorsStockRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investors/reports': {
+      id: '/investors/reports'
+      path: '/investors/reports'
+      fullPath: '/investors/reports'
+      preLoaderRoute: typeof InvestorsReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investors/governance': {
+      id: '/investors/governance'
+      path: '/investors/governance'
+      fullPath: '/investors/governance'
+      preLoaderRoute: typeof InvestorsGovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investors/contact': {
+      id: '/investors/contact'
+      path: '/investors/contact'
+      fullPath: '/investors/contact'
+      preLoaderRoute: typeof InvestorsContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investors/announcements': {
+      id: '/investors/announcements'
+      path: '/investors/announcements'
+      fullPath: '/investors/announcements'
+      preLoaderRoute: typeof InvestorsAnnouncementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
+  CareersRoute: CareersRoute,
+  CompanyRoute: CompanyRoute,
   ContactRoute: ContactRoute,
-  ProductsRoute: ProductsRoute,
+  NewsroomRoute: NewsroomRoute,
+  ProjectsRoute: ProjectsRoute,
+  SolutionsRoute: SolutionsRoute,
+  SustainabilityRoute: SustainabilityRoute,
+  InvestorsAnnouncementsRoute: InvestorsAnnouncementsRoute,
+  InvestorsContactRoute: InvestorsContactRoute,
+  InvestorsGovernanceRoute: InvestorsGovernanceRoute,
+  InvestorsReportsRoute: InvestorsReportsRoute,
+  InvestorsStockRoute: InvestorsStockRoute,
+  InvestorsIndexRoute: InvestorsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

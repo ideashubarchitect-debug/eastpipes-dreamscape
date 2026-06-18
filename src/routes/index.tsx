@@ -1,31 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Header } from "@/components/site/Header";
-import { Footer } from "@/components/site/Footer";
+import { PageShell } from "@/components/site/PageShell";
 import { Hero } from "@/components/site/Hero";
-import { ThisIsEastPipes } from "@/components/site/ThisIsEastPipes";
+import { ProofBar } from "@/components/site/ProofBar";
+import { Manifesto } from "@/components/site/Manifesto";
+import { ScaleStrip } from "@/components/site/ScaleStrip";
 import { Capabilities } from "@/components/site/Capabilities";
-import { WhyEastPipes } from "@/components/site/WhyEastPipes";
-import { Spotlight } from "@/components/site/Spotlight";
-import { Sectors } from "@/components/site/Sectors";
+import { ProjectsStrip } from "@/components/site/ProjectsStrip";
+import { SustainabilityTeaser } from "@/components/site/SustainabilityTeaser";
+import { InvestorSpotlight } from "@/components/site/InvestorSpotlight";
 import { LatestNews } from "@/components/site/LatestNews";
 import { GlobalReach } from "@/components/site/GlobalReach";
-import { Newsletter } from "@/components/site/Newsletter";
+import { CtaBand } from "@/components/site/CtaBand";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "East Pipes — Engineering Strength. Building Tomorrow." },
-      {
-        name: "description",
-        content:
-          "East Pipes Integrated Company — world-class LSAW and HSAW steel pipe manufacturing from Saudi Arabia, delivering to 50+ countries.",
-      },
-      { property: "og:title", content: "East Pipes — Engineering Strength. Building Tomorrow." },
-      {
-        property: "og:description",
-        content:
-          "Precision-engineered LSAW and HSAW steel pipes for oil & gas, water and infrastructure.",
-      },
+      { title: "East Pipes — Engineering the arteries of a new era" },
+      { name: "description", content: "East Pipes Integrated Co. (Tadawul: 1321) — world-class LSAW and HSAW steel pipe systems for energy, water and infrastructure across 50+ countries." },
+      { property: "og:title", content: "East Pipes — Engineering the arteries of a new era" },
+      { property: "og:description", content: "Listed on Tadawul. Operating at scale. Engineered for the world's most demanding infrastructure." },
     ],
   }),
   component: Index,
@@ -33,20 +26,23 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="bg-background">
-      <Header />
-      <main>
-        <Hero />
-        <ThisIsEastPipes />
-        <Capabilities />
-        <Spotlight />
-        <WhyEastPipes />
-        <Sectors />
-        <LatestNews />
-        <GlobalReach />
-        <Newsletter />
-      </main>
-      <Footer />
-    </div>
+    <PageShell>
+      <Hero />
+      <ProofBar />
+      <Manifesto />
+      <ScaleStrip />
+      <Capabilities />
+      <ProjectsStrip />
+      <SustainabilityTeaser />
+      <InvestorSpotlight />
+      <LatestNews />
+      <GlobalReach />
+      <CtaBand
+        eyebrow="Partner with East Pipes"
+        title="Build with the company powering the next century of infrastructure."
+        primary={{ label: "Contact our team", to: "/contact" }}
+        secondary={{ label: "Investor relations", to: "/investors" }}
+      />
+    </PageShell>
   );
 }

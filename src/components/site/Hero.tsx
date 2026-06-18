@@ -4,30 +4,35 @@ import { ArrowRight } from "lucide-react";
 import banner from "@/assets/hero-banner.jpg";
 import facility from "@/assets/hero-facility.jpg";
 import manufacturing from "@/assets/hero-manufacturing.jpg";
+import { TickerPill } from "./primitives";
 
 const slides = [
   {
     image: banner,
-    eyebrow: "East Pipes",
-    title: "Building Stronger Futures Together",
-    sub: "A billion-dollar legacy of excellence, delivering world-class steel pipe solutions that power industries and communities around the globe.",
-    cta: { label: "Discover our story", to: "/about" as const },
+    eyebrow: "East Pipes · Tadawul 1321",
+    title: "Engineering the arteries of a new era.",
+    sub: "World-class steel pipe systems moving energy, water and ambition across continents — built in Saudi Arabia, trusted in 50+ countries.",
+    cta: { label: "Explore the company", to: "/company" as const },
+    cta2: { label: "Investor relations", to: "/investors" as const },
   },
   {
     image: facility,
-    eyebrow: "Engineering Excellence",
-    title: "Engineering Strength. Building Tomorrow.",
-    sub: "From the heart of Saudi Arabia to projects across the world — precision-engineered pipes built to perform for generations.",
-    cta: { label: "Explore products", to: "/products" as const },
+    eyebrow: "Scale · Precision · Trust",
+    title: "Engineering strength. Building tomorrow.",
+    sub: "From the heart of the Kingdom to flagship projects worldwide — precision-engineered pipes built to perform for generations.",
+    cta: { label: "Our solutions", to: "/solutions" as const },
+    cta2: { label: "Flagship projects", to: "/projects" as const },
   },
   {
     image: manufacturing,
-    eyebrow: "Precision Manufacturing",
-    title: "Crafted with Fire. Forged for Performance.",
-    sub: "Advanced LSAW and HSAW manufacturing lines, certified to the world's most demanding standards.",
-    cta: { label: "Our capabilities", to: "/products" as const },
+    eyebrow: "LSAW · HSAW · Coatings",
+    title: "Crafted with fire. Forged for performance.",
+    sub: "Advanced manufacturing lines certified to the world's most demanding standards — API 5L, ISO 9001, ISO 14001 and beyond.",
+    cta: { label: "Capabilities", to: "/solutions" as const },
+    cta2: { label: "Sustainability", to: "/sustainability" as const },
   },
 ];
+
 
 export function Hero() {
   const [i, setI] = useState(0);
@@ -58,22 +63,34 @@ export function Hero() {
 
       <div className="relative z-10 h-full container-wide flex flex-col justify-end pb-28 md:pb-32">
         <div key={i} className="max-w-3xl animate-fade-up">
-          <span className="inline-block text-xs md:text-sm uppercase tracking-[0.3em] text-brand font-medium mb-6">
-            {slides[i].eyebrow}
-          </span>
-          <h1 className="text-white text-5xl md:text-7xl lg:text-8xl font-semibold leading-[0.95] text-balance">
+          <div className="mb-6 flex flex-wrap items-center gap-3">
+            <span className="inline-block text-xs md:text-sm uppercase tracking-[0.3em] text-signal font-medium">
+              {slides[i].eyebrow}
+            </span>
+            <TickerPill compact />
+          </div>
+          <h1 className="text-white text-5xl md:text-7xl lg:text-8xl font-medium leading-[0.95] text-balance">
             {slides[i].title}
           </h1>
           <p className="mt-8 text-white/80 text-lg md:text-xl max-w-xl leading-relaxed">
             {slides[i].sub}
           </p>
-          <Link
-            to={slides[i].cta.to}
-            className="group mt-10 inline-flex items-center gap-3 text-white text-base font-medium border-b border-white/40 pb-2 hover:border-brand hover:text-brand transition"
-          >
-            {slides[i].cta.label}
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Link>
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <Link
+              to={slides[i].cta.to}
+              className="group inline-flex items-center gap-3 rounded-full bg-white text-ink px-6 py-3 text-sm font-medium hover:bg-signal transition"
+            >
+              {slides[i].cta.label}
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+            <Link
+              to={slides[i].cta2.to}
+              className="group inline-flex items-center gap-3 rounded-full border border-white/30 text-white px-6 py-3 text-sm font-medium hover:bg-white hover:text-ink transition"
+            >
+              {slides[i].cta2.label}
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
         </div>
 
         <div className="mt-12 flex items-center gap-3">
