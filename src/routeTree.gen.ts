@@ -9,7 +9,13 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SustainabilityRouteImport } from './routes/sustainability'
+import { Route as SolutionsRouteImport } from './routes/solutions'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as NewsroomRouteImport } from './routes/newsroom'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CompanyRouteImport } from './routes/company'
+import { Route as CareersRouteImport } from './routes/careers'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as InvestorsIndexRouteImport } from './routes/investors.index'
 import { Route as InvestorsStockRouteImport } from './routes/investors.stock'
@@ -18,9 +24,39 @@ import { Route as InvestorsGovernanceRouteImport } from './routes/investors.gove
 import { Route as InvestorsContactRouteImport } from './routes/investors.contact'
 import { Route as InvestorsAnnouncementsRouteImport } from './routes/investors.announcements'
 
+const SustainabilityRoute = SustainabilityRouteImport.update({
+  id: '/sustainability',
+  path: '/sustainability',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolutionsRoute = SolutionsRouteImport.update({
+  id: '/solutions',
+  path: '/solutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsroomRoute = NewsroomRouteImport.update({
+  id: '/newsroom',
+  path: '/newsroom',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompanyRoute = CompanyRouteImport.update({
+  id: '/company',
+  path: '/company',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -61,7 +97,13 @@ const InvestorsAnnouncementsRoute = InvestorsAnnouncementsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/careers': typeof CareersRoute
+  '/company': typeof CompanyRoute
   '/contact': typeof ContactRoute
+  '/newsroom': typeof NewsroomRoute
+  '/projects': typeof ProjectsRoute
+  '/solutions': typeof SolutionsRoute
+  '/sustainability': typeof SustainabilityRoute
   '/investors/announcements': typeof InvestorsAnnouncementsRoute
   '/investors/contact': typeof InvestorsContactRoute
   '/investors/governance': typeof InvestorsGovernanceRoute
@@ -71,7 +113,13 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/careers': typeof CareersRoute
+  '/company': typeof CompanyRoute
   '/contact': typeof ContactRoute
+  '/newsroom': typeof NewsroomRoute
+  '/projects': typeof ProjectsRoute
+  '/solutions': typeof SolutionsRoute
+  '/sustainability': typeof SustainabilityRoute
   '/investors/announcements': typeof InvestorsAnnouncementsRoute
   '/investors/contact': typeof InvestorsContactRoute
   '/investors/governance': typeof InvestorsGovernanceRoute
@@ -82,7 +130,13 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/careers': typeof CareersRoute
+  '/company': typeof CompanyRoute
   '/contact': typeof ContactRoute
+  '/newsroom': typeof NewsroomRoute
+  '/projects': typeof ProjectsRoute
+  '/solutions': typeof SolutionsRoute
+  '/sustainability': typeof SustainabilityRoute
   '/investors/announcements': typeof InvestorsAnnouncementsRoute
   '/investors/contact': typeof InvestorsContactRoute
   '/investors/governance': typeof InvestorsGovernanceRoute
@@ -94,7 +148,13 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/careers'
+    | '/company'
     | '/contact'
+    | '/newsroom'
+    | '/projects'
+    | '/solutions'
+    | '/sustainability'
     | '/investors/announcements'
     | '/investors/contact'
     | '/investors/governance'
@@ -104,7 +164,13 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/careers'
+    | '/company'
     | '/contact'
+    | '/newsroom'
+    | '/projects'
+    | '/solutions'
+    | '/sustainability'
     | '/investors/announcements'
     | '/investors/contact'
     | '/investors/governance'
@@ -114,7 +180,13 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/careers'
+    | '/company'
     | '/contact'
+    | '/newsroom'
+    | '/projects'
+    | '/solutions'
+    | '/sustainability'
     | '/investors/announcements'
     | '/investors/contact'
     | '/investors/governance'
@@ -125,7 +197,13 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CareersRoute: typeof CareersRoute
+  CompanyRoute: typeof CompanyRoute
   ContactRoute: typeof ContactRoute
+  NewsroomRoute: typeof NewsroomRoute
+  ProjectsRoute: typeof ProjectsRoute
+  SolutionsRoute: typeof SolutionsRoute
+  SustainabilityRoute: typeof SustainabilityRoute
   InvestorsAnnouncementsRoute: typeof InvestorsAnnouncementsRoute
   InvestorsContactRoute: typeof InvestorsContactRoute
   InvestorsGovernanceRoute: typeof InvestorsGovernanceRoute
@@ -136,11 +214,53 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sustainability': {
+      id: '/sustainability'
+      path: '/sustainability'
+      fullPath: '/sustainability'
+      preLoaderRoute: typeof SustainabilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions': {
+      id: '/solutions'
+      path: '/solutions'
+      fullPath: '/solutions'
+      preLoaderRoute: typeof SolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/newsroom': {
+      id: '/newsroom'
+      path: '/newsroom'
+      fullPath: '/newsroom'
+      preLoaderRoute: typeof NewsroomRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/company': {
+      id: '/company'
+      path: '/company'
+      fullPath: '/company'
+      preLoaderRoute: typeof CompanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -197,7 +317,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CareersRoute: CareersRoute,
+  CompanyRoute: CompanyRoute,
   ContactRoute: ContactRoute,
+  NewsroomRoute: NewsroomRoute,
+  ProjectsRoute: ProjectsRoute,
+  SolutionsRoute: SolutionsRoute,
+  SustainabilityRoute: SustainabilityRoute,
   InvestorsAnnouncementsRoute: InvestorsAnnouncementsRoute,
   InvestorsContactRoute: InvestorsContactRoute,
   InvestorsGovernanceRoute: InvestorsGovernanceRoute,
@@ -208,13 +334,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
