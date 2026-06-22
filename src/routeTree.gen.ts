@@ -9,19 +9,129 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WhatWeDoRouteImport } from './routes/what-we-do'
+import { Route as VendorsRouteImport } from './routes/vendors'
+import { Route as SustainabilityRouteImport } from './routes/sustainability'
+import { Route as SolutionsRouteImport } from './routes/solutions'
+import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ProductsRouteImport } from './routes/products'
+import { Route as OurStoryRouteImport } from './routes/our-story'
+import { Route as OurProjectsRouteImport } from './routes/our-projects'
+import { Route as NewsRouteImport } from './routes/news'
+import { Route as MediaRouteImport } from './routes/media'
+import { Route as InvestorsRouteImport } from './routes/investors'
+import { Route as InvestorRelationsRouteImport } from './routes/investor-relations'
+import { Route as GovernanceRouteImport } from './routes/governance'
+import { Route as GetQuoteRouteImport } from './routes/get-quote'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CareerRouteImport } from './routes/career'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WhatWeDoProductsAndServicesRouteImport } from './routes/what-we-do_.products-and-services'
+import { Route as SustainabilityQualityHsePolicyRouteImport } from './routes/sustainability_.quality-hse-policy'
+import { Route as SustainabilityOurApproachRouteImport } from './routes/sustainability_.our-approach'
+import { Route as SustainabilityEnergyManagementRouteImport } from './routes/sustainability_.energy-management'
+import { Route as SustainabilityCorporateSocialResponsibilityRouteImport } from './routes/sustainability_.corporate-social-responsibility'
+import { Route as OurStoryOurStrategyRouteImport } from './routes/our-story_.our-strategy'
+import { Route as OurStoryOurMilestoneRouteImport } from './routes/our-story_.our-milestone'
+import { Route as OurStoryMissionAndVisionRouteImport } from './routes/our-story_.mission-and-vision'
+import { Route as OurStoryCompanyGovernanceRouteImport } from './routes/our-story_.company-governance'
+import { Route as OurStoryCeoMessageRouteImport } from './routes/our-story_.ceo-message'
+import { Route as OurStoryAtAGlanceRouteImport } from './routes/our-story_.at-a-glance'
+import { Route as OurProjectsPotableWaterRouteImport } from './routes/our-projects_.potable-water'
+import { Route as OurProjectsOilAndGasRouteImport } from './routes/our-projects_.oil-and-gas'
+import { Route as NewsSlugRouteImport } from './routes/news.$slug'
+import { Route as InvestorRelationsStockInformationRouteImport } from './routes/investor-relations_.stock-information'
+import { Route as InvestorRelationsNominationsRouteImport } from './routes/investor-relations_.nominations'
+import { Route as InvestorRelationsIrResourcesRouteImport } from './routes/investor-relations_.ir-resources'
+import { Route as InvestorRelationsFaqsRouteImport } from './routes/investor-relations_.faqs'
+import { Route as InvestorRelationsDisclaimerRouteImport } from './routes/investor-relations_.disclaimer'
+import { Route as InvestorRelationsAnalystCoverageRouteImport } from './routes/investor-relations_.analyst-coverage'
+import { Route as WhatWeDoProductsAndServicesHsawPipesRouteImport } from './routes/what-we-do_.products-and-services_.hsaw-pipes'
+import { Route as WhatWeDoProductsAndServicesDoubleJointingRouteImport } from './routes/what-we-do_.products-and-services_.double-jointing'
+import { Route as WhatWeDoProductsAndServicesCoatingRouteImport } from './routes/what-we-do_.products-and-services_.coating'
+import { Route as WhatWeDoProductsAndServicesAncillaryServicesRouteImport } from './routes/what-we-do_.products-and-services_.ancillary-services'
+import { Route as OurStoryLeadershipExecutiveLeadershipRouteImport } from './routes/our-story_.leadership.executive-leadership'
+import { Route as OurStoryLeadershipBodRouteImport } from './routes/our-story_.leadership.bod'
 
+const WhatWeDoRoute = WhatWeDoRouteImport.update({
+  id: '/what-we-do',
+  path: '/what-we-do',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VendorsRoute = VendorsRouteImport.update({
+  id: '/vendors',
+  path: '/vendors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SustainabilityRoute = SustainabilityRouteImport.update({
+  id: '/sustainability',
+  path: '/sustainability',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SolutionsRoute = SolutionsRouteImport.update({
+  id: '/solutions',
+  path: '/solutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
   path: '/products',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OurStoryRoute = OurStoryRouteImport.update({
+  id: '/our-story',
+  path: '/our-story',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OurProjectsRoute = OurProjectsRouteImport.update({
+  id: '/our-projects',
+  path: '/our-projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MediaRoute = MediaRouteImport.update({
+  id: '/media',
+  path: '/media',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestorsRoute = InvestorsRouteImport.update({
+  id: '/investors',
+  path: '/investors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestorRelationsRoute = InvestorRelationsRouteImport.update({
+  id: '/investor-relations',
+  path: '/investor-relations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GovernanceRoute = GovernanceRouteImport.update({
+  id: '/governance',
+  path: '/governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GetQuoteRoute = GetQuoteRouteImport.update({
+  id: '/get-quote',
+  path: '/get-quote',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareerRoute = CareerRouteImport.update({
+  id: '/career',
+  path: '/career',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -34,43 +144,517 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WhatWeDoProductsAndServicesRoute =
+  WhatWeDoProductsAndServicesRouteImport.update({
+    id: '/what-we-do_/products-and-services',
+    path: '/what-we-do/products-and-services',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SustainabilityQualityHsePolicyRoute =
+  SustainabilityQualityHsePolicyRouteImport.update({
+    id: '/sustainability_/quality-hse-policy',
+    path: '/sustainability/quality-hse-policy',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SustainabilityOurApproachRoute =
+  SustainabilityOurApproachRouteImport.update({
+    id: '/sustainability_/our-approach',
+    path: '/sustainability/our-approach',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SustainabilityEnergyManagementRoute =
+  SustainabilityEnergyManagementRouteImport.update({
+    id: '/sustainability_/energy-management',
+    path: '/sustainability/energy-management',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SustainabilityCorporateSocialResponsibilityRoute =
+  SustainabilityCorporateSocialResponsibilityRouteImport.update({
+    id: '/sustainability_/corporate-social-responsibility',
+    path: '/sustainability/corporate-social-responsibility',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const OurStoryOurStrategyRoute = OurStoryOurStrategyRouteImport.update({
+  id: '/our-story_/our-strategy',
+  path: '/our-story/our-strategy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OurStoryOurMilestoneRoute = OurStoryOurMilestoneRouteImport.update({
+  id: '/our-story_/our-milestone',
+  path: '/our-story/our-milestone',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OurStoryMissionAndVisionRoute =
+  OurStoryMissionAndVisionRouteImport.update({
+    id: '/our-story_/mission-and-vision',
+    path: '/our-story/mission-and-vision',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const OurStoryCompanyGovernanceRoute =
+  OurStoryCompanyGovernanceRouteImport.update({
+    id: '/our-story_/company-governance',
+    path: '/our-story/company-governance',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const OurStoryCeoMessageRoute = OurStoryCeoMessageRouteImport.update({
+  id: '/our-story_/ceo-message',
+  path: '/our-story/ceo-message',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OurStoryAtAGlanceRoute = OurStoryAtAGlanceRouteImport.update({
+  id: '/our-story_/at-a-glance',
+  path: '/our-story/at-a-glance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OurProjectsPotableWaterRoute = OurProjectsPotableWaterRouteImport.update({
+  id: '/our-projects_/potable-water',
+  path: '/our-projects/potable-water',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OurProjectsOilAndGasRoute = OurProjectsOilAndGasRouteImport.update({
+  id: '/our-projects_/oil-and-gas',
+  path: '/our-projects/oil-and-gas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsSlugRoute = NewsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => NewsRoute,
+} as any)
+const InvestorRelationsStockInformationRoute =
+  InvestorRelationsStockInformationRouteImport.update({
+    id: '/investor-relations_/stock-information',
+    path: '/investor-relations/stock-information',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const InvestorRelationsNominationsRoute =
+  InvestorRelationsNominationsRouteImport.update({
+    id: '/investor-relations_/nominations',
+    path: '/investor-relations/nominations',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const InvestorRelationsIrResourcesRoute =
+  InvestorRelationsIrResourcesRouteImport.update({
+    id: '/investor-relations_/ir-resources',
+    path: '/investor-relations/ir-resources',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const InvestorRelationsFaqsRoute = InvestorRelationsFaqsRouteImport.update({
+  id: '/investor-relations_/faqs',
+  path: '/investor-relations/faqs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestorRelationsDisclaimerRoute =
+  InvestorRelationsDisclaimerRouteImport.update({
+    id: '/investor-relations_/disclaimer',
+    path: '/investor-relations/disclaimer',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const InvestorRelationsAnalystCoverageRoute =
+  InvestorRelationsAnalystCoverageRouteImport.update({
+    id: '/investor-relations_/analyst-coverage',
+    path: '/investor-relations/analyst-coverage',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WhatWeDoProductsAndServicesHsawPipesRoute =
+  WhatWeDoProductsAndServicesHsawPipesRouteImport.update({
+    id: '/what-we-do_/products-and-services_/hsaw-pipes',
+    path: '/what-we-do/products-and-services/hsaw-pipes',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WhatWeDoProductsAndServicesDoubleJointingRoute =
+  WhatWeDoProductsAndServicesDoubleJointingRouteImport.update({
+    id: '/what-we-do_/products-and-services_/double-jointing',
+    path: '/what-we-do/products-and-services/double-jointing',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WhatWeDoProductsAndServicesCoatingRoute =
+  WhatWeDoProductsAndServicesCoatingRouteImport.update({
+    id: '/what-we-do_/products-and-services_/coating',
+    path: '/what-we-do/products-and-services/coating',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WhatWeDoProductsAndServicesAncillaryServicesRoute =
+  WhatWeDoProductsAndServicesAncillaryServicesRouteImport.update({
+    id: '/what-we-do_/products-and-services_/ancillary-services',
+    path: '/what-we-do/products-and-services/ancillary-services',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const OurStoryLeadershipExecutiveLeadershipRoute =
+  OurStoryLeadershipExecutiveLeadershipRouteImport.update({
+    id: '/our-story_/leadership/executive-leadership',
+    path: '/our-story/leadership/executive-leadership',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const OurStoryLeadershipBodRoute = OurStoryLeadershipBodRouteImport.update({
+  id: '/our-story_/leadership/bod',
+  path: '/our-story/leadership/bod',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/career': typeof CareerRoute
   '/contact': typeof ContactRoute
+  '/get-quote': typeof GetQuoteRoute
+  '/governance': typeof GovernanceRoute
+  '/investor-relations': typeof InvestorRelationsRoute
+  '/investors': typeof InvestorsRoute
+  '/media': typeof MediaRoute
+  '/news': typeof NewsRouteWithChildren
+  '/our-projects': typeof OurProjectsRoute
+  '/our-story': typeof OurStoryRoute
   '/products': typeof ProductsRoute
+  '/projects': typeof ProjectsRoute
+  '/solutions': typeof SolutionsRoute
+  '/sustainability': typeof SustainabilityRoute
+  '/vendors': typeof VendorsRoute
+  '/what-we-do': typeof WhatWeDoRoute
+  '/investor-relations/analyst-coverage': typeof InvestorRelationsAnalystCoverageRoute
+  '/investor-relations/disclaimer': typeof InvestorRelationsDisclaimerRoute
+  '/investor-relations/faqs': typeof InvestorRelationsFaqsRoute
+  '/investor-relations/ir-resources': typeof InvestorRelationsIrResourcesRoute
+  '/investor-relations/nominations': typeof InvestorRelationsNominationsRoute
+  '/investor-relations/stock-information': typeof InvestorRelationsStockInformationRoute
+  '/news/$slug': typeof NewsSlugRoute
+  '/our-projects/oil-and-gas': typeof OurProjectsOilAndGasRoute
+  '/our-projects/potable-water': typeof OurProjectsPotableWaterRoute
+  '/our-story/at-a-glance': typeof OurStoryAtAGlanceRoute
+  '/our-story/ceo-message': typeof OurStoryCeoMessageRoute
+  '/our-story/company-governance': typeof OurStoryCompanyGovernanceRoute
+  '/our-story/mission-and-vision': typeof OurStoryMissionAndVisionRoute
+  '/our-story/our-milestone': typeof OurStoryOurMilestoneRoute
+  '/our-story/our-strategy': typeof OurStoryOurStrategyRoute
+  '/sustainability/corporate-social-responsibility': typeof SustainabilityCorporateSocialResponsibilityRoute
+  '/sustainability/energy-management': typeof SustainabilityEnergyManagementRoute
+  '/sustainability/our-approach': typeof SustainabilityOurApproachRoute
+  '/sustainability/quality-hse-policy': typeof SustainabilityQualityHsePolicyRoute
+  '/what-we-do/products-and-services': typeof WhatWeDoProductsAndServicesRoute
+  '/our-story/leadership/bod': typeof OurStoryLeadershipBodRoute
+  '/our-story/leadership/executive-leadership': typeof OurStoryLeadershipExecutiveLeadershipRoute
+  '/what-we-do/products-and-services/ancillary-services': typeof WhatWeDoProductsAndServicesAncillaryServicesRoute
+  '/what-we-do/products-and-services/coating': typeof WhatWeDoProductsAndServicesCoatingRoute
+  '/what-we-do/products-and-services/double-jointing': typeof WhatWeDoProductsAndServicesDoubleJointingRoute
+  '/what-we-do/products-and-services/hsaw-pipes': typeof WhatWeDoProductsAndServicesHsawPipesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/career': typeof CareerRoute
   '/contact': typeof ContactRoute
+  '/get-quote': typeof GetQuoteRoute
+  '/governance': typeof GovernanceRoute
+  '/investor-relations': typeof InvestorRelationsRoute
+  '/investors': typeof InvestorsRoute
+  '/media': typeof MediaRoute
+  '/news': typeof NewsRouteWithChildren
+  '/our-projects': typeof OurProjectsRoute
+  '/our-story': typeof OurStoryRoute
   '/products': typeof ProductsRoute
+  '/projects': typeof ProjectsRoute
+  '/solutions': typeof SolutionsRoute
+  '/sustainability': typeof SustainabilityRoute
+  '/vendors': typeof VendorsRoute
+  '/what-we-do': typeof WhatWeDoRoute
+  '/investor-relations/analyst-coverage': typeof InvestorRelationsAnalystCoverageRoute
+  '/investor-relations/disclaimer': typeof InvestorRelationsDisclaimerRoute
+  '/investor-relations/faqs': typeof InvestorRelationsFaqsRoute
+  '/investor-relations/ir-resources': typeof InvestorRelationsIrResourcesRoute
+  '/investor-relations/nominations': typeof InvestorRelationsNominationsRoute
+  '/investor-relations/stock-information': typeof InvestorRelationsStockInformationRoute
+  '/news/$slug': typeof NewsSlugRoute
+  '/our-projects/oil-and-gas': typeof OurProjectsOilAndGasRoute
+  '/our-projects/potable-water': typeof OurProjectsPotableWaterRoute
+  '/our-story/at-a-glance': typeof OurStoryAtAGlanceRoute
+  '/our-story/ceo-message': typeof OurStoryCeoMessageRoute
+  '/our-story/company-governance': typeof OurStoryCompanyGovernanceRoute
+  '/our-story/mission-and-vision': typeof OurStoryMissionAndVisionRoute
+  '/our-story/our-milestone': typeof OurStoryOurMilestoneRoute
+  '/our-story/our-strategy': typeof OurStoryOurStrategyRoute
+  '/sustainability/corporate-social-responsibility': typeof SustainabilityCorporateSocialResponsibilityRoute
+  '/sustainability/energy-management': typeof SustainabilityEnergyManagementRoute
+  '/sustainability/our-approach': typeof SustainabilityOurApproachRoute
+  '/sustainability/quality-hse-policy': typeof SustainabilityQualityHsePolicyRoute
+  '/what-we-do/products-and-services': typeof WhatWeDoProductsAndServicesRoute
+  '/our-story/leadership/bod': typeof OurStoryLeadershipBodRoute
+  '/our-story/leadership/executive-leadership': typeof OurStoryLeadershipExecutiveLeadershipRoute
+  '/what-we-do/products-and-services/ancillary-services': typeof WhatWeDoProductsAndServicesAncillaryServicesRoute
+  '/what-we-do/products-and-services/coating': typeof WhatWeDoProductsAndServicesCoatingRoute
+  '/what-we-do/products-and-services/double-jointing': typeof WhatWeDoProductsAndServicesDoubleJointingRoute
+  '/what-we-do/products-and-services/hsaw-pipes': typeof WhatWeDoProductsAndServicesHsawPipesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/career': typeof CareerRoute
   '/contact': typeof ContactRoute
+  '/get-quote': typeof GetQuoteRoute
+  '/governance': typeof GovernanceRoute
+  '/investor-relations': typeof InvestorRelationsRoute
+  '/investors': typeof InvestorsRoute
+  '/media': typeof MediaRoute
+  '/news': typeof NewsRouteWithChildren
+  '/our-projects': typeof OurProjectsRoute
+  '/our-story': typeof OurStoryRoute
   '/products': typeof ProductsRoute
+  '/projects': typeof ProjectsRoute
+  '/solutions': typeof SolutionsRoute
+  '/sustainability': typeof SustainabilityRoute
+  '/vendors': typeof VendorsRoute
+  '/what-we-do': typeof WhatWeDoRoute
+  '/investor-relations_/analyst-coverage': typeof InvestorRelationsAnalystCoverageRoute
+  '/investor-relations_/disclaimer': typeof InvestorRelationsDisclaimerRoute
+  '/investor-relations_/faqs': typeof InvestorRelationsFaqsRoute
+  '/investor-relations_/ir-resources': typeof InvestorRelationsIrResourcesRoute
+  '/investor-relations_/nominations': typeof InvestorRelationsNominationsRoute
+  '/investor-relations_/stock-information': typeof InvestorRelationsStockInformationRoute
+  '/news/$slug': typeof NewsSlugRoute
+  '/our-projects_/oil-and-gas': typeof OurProjectsOilAndGasRoute
+  '/our-projects_/potable-water': typeof OurProjectsPotableWaterRoute
+  '/our-story_/at-a-glance': typeof OurStoryAtAGlanceRoute
+  '/our-story_/ceo-message': typeof OurStoryCeoMessageRoute
+  '/our-story_/company-governance': typeof OurStoryCompanyGovernanceRoute
+  '/our-story_/mission-and-vision': typeof OurStoryMissionAndVisionRoute
+  '/our-story_/our-milestone': typeof OurStoryOurMilestoneRoute
+  '/our-story_/our-strategy': typeof OurStoryOurStrategyRoute
+  '/sustainability_/corporate-social-responsibility': typeof SustainabilityCorporateSocialResponsibilityRoute
+  '/sustainability_/energy-management': typeof SustainabilityEnergyManagementRoute
+  '/sustainability_/our-approach': typeof SustainabilityOurApproachRoute
+  '/sustainability_/quality-hse-policy': typeof SustainabilityQualityHsePolicyRoute
+  '/what-we-do_/products-and-services': typeof WhatWeDoProductsAndServicesRoute
+  '/our-story_/leadership/bod': typeof OurStoryLeadershipBodRoute
+  '/our-story_/leadership/executive-leadership': typeof OurStoryLeadershipExecutiveLeadershipRoute
+  '/what-we-do_/products-and-services_/ancillary-services': typeof WhatWeDoProductsAndServicesAncillaryServicesRoute
+  '/what-we-do_/products-and-services_/coating': typeof WhatWeDoProductsAndServicesCoatingRoute
+  '/what-we-do_/products-and-services_/double-jointing': typeof WhatWeDoProductsAndServicesDoubleJointingRoute
+  '/what-we-do_/products-and-services_/hsaw-pipes': typeof WhatWeDoProductsAndServicesHsawPipesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/products'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/career'
+    | '/contact'
+    | '/get-quote'
+    | '/governance'
+    | '/investor-relations'
+    | '/investors'
+    | '/media'
+    | '/news'
+    | '/our-projects'
+    | '/our-story'
+    | '/products'
+    | '/projects'
+    | '/solutions'
+    | '/sustainability'
+    | '/vendors'
+    | '/what-we-do'
+    | '/investor-relations/analyst-coverage'
+    | '/investor-relations/disclaimer'
+    | '/investor-relations/faqs'
+    | '/investor-relations/ir-resources'
+    | '/investor-relations/nominations'
+    | '/investor-relations/stock-information'
+    | '/news/$slug'
+    | '/our-projects/oil-and-gas'
+    | '/our-projects/potable-water'
+    | '/our-story/at-a-glance'
+    | '/our-story/ceo-message'
+    | '/our-story/company-governance'
+    | '/our-story/mission-and-vision'
+    | '/our-story/our-milestone'
+    | '/our-story/our-strategy'
+    | '/sustainability/corporate-social-responsibility'
+    | '/sustainability/energy-management'
+    | '/sustainability/our-approach'
+    | '/sustainability/quality-hse-policy'
+    | '/what-we-do/products-and-services'
+    | '/our-story/leadership/bod'
+    | '/our-story/leadership/executive-leadership'
+    | '/what-we-do/products-and-services/ancillary-services'
+    | '/what-we-do/products-and-services/coating'
+    | '/what-we-do/products-and-services/double-jointing'
+    | '/what-we-do/products-and-services/hsaw-pipes'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/products'
-  id: '__root__' | '/' | '/about' | '/contact' | '/products'
+  to:
+    | '/'
+    | '/about'
+    | '/career'
+    | '/contact'
+    | '/get-quote'
+    | '/governance'
+    | '/investor-relations'
+    | '/investors'
+    | '/media'
+    | '/news'
+    | '/our-projects'
+    | '/our-story'
+    | '/products'
+    | '/projects'
+    | '/solutions'
+    | '/sustainability'
+    | '/vendors'
+    | '/what-we-do'
+    | '/investor-relations/analyst-coverage'
+    | '/investor-relations/disclaimer'
+    | '/investor-relations/faqs'
+    | '/investor-relations/ir-resources'
+    | '/investor-relations/nominations'
+    | '/investor-relations/stock-information'
+    | '/news/$slug'
+    | '/our-projects/oil-and-gas'
+    | '/our-projects/potable-water'
+    | '/our-story/at-a-glance'
+    | '/our-story/ceo-message'
+    | '/our-story/company-governance'
+    | '/our-story/mission-and-vision'
+    | '/our-story/our-milestone'
+    | '/our-story/our-strategy'
+    | '/sustainability/corporate-social-responsibility'
+    | '/sustainability/energy-management'
+    | '/sustainability/our-approach'
+    | '/sustainability/quality-hse-policy'
+    | '/what-we-do/products-and-services'
+    | '/our-story/leadership/bod'
+    | '/our-story/leadership/executive-leadership'
+    | '/what-we-do/products-and-services/ancillary-services'
+    | '/what-we-do/products-and-services/coating'
+    | '/what-we-do/products-and-services/double-jointing'
+    | '/what-we-do/products-and-services/hsaw-pipes'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/career'
+    | '/contact'
+    | '/get-quote'
+    | '/governance'
+    | '/investor-relations'
+    | '/investors'
+    | '/media'
+    | '/news'
+    | '/our-projects'
+    | '/our-story'
+    | '/products'
+    | '/projects'
+    | '/solutions'
+    | '/sustainability'
+    | '/vendors'
+    | '/what-we-do'
+    | '/investor-relations_/analyst-coverage'
+    | '/investor-relations_/disclaimer'
+    | '/investor-relations_/faqs'
+    | '/investor-relations_/ir-resources'
+    | '/investor-relations_/nominations'
+    | '/investor-relations_/stock-information'
+    | '/news/$slug'
+    | '/our-projects_/oil-and-gas'
+    | '/our-projects_/potable-water'
+    | '/our-story_/at-a-glance'
+    | '/our-story_/ceo-message'
+    | '/our-story_/company-governance'
+    | '/our-story_/mission-and-vision'
+    | '/our-story_/our-milestone'
+    | '/our-story_/our-strategy'
+    | '/sustainability_/corporate-social-responsibility'
+    | '/sustainability_/energy-management'
+    | '/sustainability_/our-approach'
+    | '/sustainability_/quality-hse-policy'
+    | '/what-we-do_/products-and-services'
+    | '/our-story_/leadership/bod'
+    | '/our-story_/leadership/executive-leadership'
+    | '/what-we-do_/products-and-services_/ancillary-services'
+    | '/what-we-do_/products-and-services_/coating'
+    | '/what-we-do_/products-and-services_/double-jointing'
+    | '/what-we-do_/products-and-services_/hsaw-pipes'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CareerRoute: typeof CareerRoute
   ContactRoute: typeof ContactRoute
+  GetQuoteRoute: typeof GetQuoteRoute
+  GovernanceRoute: typeof GovernanceRoute
+  InvestorRelationsRoute: typeof InvestorRelationsRoute
+  InvestorsRoute: typeof InvestorsRoute
+  MediaRoute: typeof MediaRoute
+  NewsRoute: typeof NewsRouteWithChildren
+  OurProjectsRoute: typeof OurProjectsRoute
+  OurStoryRoute: typeof OurStoryRoute
   ProductsRoute: typeof ProductsRoute
+  ProjectsRoute: typeof ProjectsRoute
+  SolutionsRoute: typeof SolutionsRoute
+  SustainabilityRoute: typeof SustainabilityRoute
+  VendorsRoute: typeof VendorsRoute
+  WhatWeDoRoute: typeof WhatWeDoRoute
+  InvestorRelationsAnalystCoverageRoute: typeof InvestorRelationsAnalystCoverageRoute
+  InvestorRelationsDisclaimerRoute: typeof InvestorRelationsDisclaimerRoute
+  InvestorRelationsFaqsRoute: typeof InvestorRelationsFaqsRoute
+  InvestorRelationsIrResourcesRoute: typeof InvestorRelationsIrResourcesRoute
+  InvestorRelationsNominationsRoute: typeof InvestorRelationsNominationsRoute
+  InvestorRelationsStockInformationRoute: typeof InvestorRelationsStockInformationRoute
+  OurProjectsOilAndGasRoute: typeof OurProjectsOilAndGasRoute
+  OurProjectsPotableWaterRoute: typeof OurProjectsPotableWaterRoute
+  OurStoryAtAGlanceRoute: typeof OurStoryAtAGlanceRoute
+  OurStoryCeoMessageRoute: typeof OurStoryCeoMessageRoute
+  OurStoryCompanyGovernanceRoute: typeof OurStoryCompanyGovernanceRoute
+  OurStoryMissionAndVisionRoute: typeof OurStoryMissionAndVisionRoute
+  OurStoryOurMilestoneRoute: typeof OurStoryOurMilestoneRoute
+  OurStoryOurStrategyRoute: typeof OurStoryOurStrategyRoute
+  SustainabilityCorporateSocialResponsibilityRoute: typeof SustainabilityCorporateSocialResponsibilityRoute
+  SustainabilityEnergyManagementRoute: typeof SustainabilityEnergyManagementRoute
+  SustainabilityOurApproachRoute: typeof SustainabilityOurApproachRoute
+  SustainabilityQualityHsePolicyRoute: typeof SustainabilityQualityHsePolicyRoute
+  WhatWeDoProductsAndServicesRoute: typeof WhatWeDoProductsAndServicesRoute
+  OurStoryLeadershipBodRoute: typeof OurStoryLeadershipBodRoute
+  OurStoryLeadershipExecutiveLeadershipRoute: typeof OurStoryLeadershipExecutiveLeadershipRoute
+  WhatWeDoProductsAndServicesAncillaryServicesRoute: typeof WhatWeDoProductsAndServicesAncillaryServicesRoute
+  WhatWeDoProductsAndServicesCoatingRoute: typeof WhatWeDoProductsAndServicesCoatingRoute
+  WhatWeDoProductsAndServicesDoubleJointingRoute: typeof WhatWeDoProductsAndServicesDoubleJointingRoute
+  WhatWeDoProductsAndServicesHsawPipesRoute: typeof WhatWeDoProductsAndServicesHsawPipesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/what-we-do': {
+      id: '/what-we-do'
+      path: '/what-we-do'
+      fullPath: '/what-we-do'
+      preLoaderRoute: typeof WhatWeDoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vendors': {
+      id: '/vendors'
+      path: '/vendors'
+      fullPath: '/vendors'
+      preLoaderRoute: typeof VendorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sustainability': {
+      id: '/sustainability'
+      path: '/sustainability'
+      fullPath: '/sustainability'
+      preLoaderRoute: typeof SustainabilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/solutions': {
+      id: '/solutions'
+      path: '/solutions'
+      fullPath: '/solutions'
+      preLoaderRoute: typeof SolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/products': {
       id: '/products'
       path: '/products'
@@ -78,11 +662,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/our-story': {
+      id: '/our-story'
+      path: '/our-story'
+      fullPath: '/our-story'
+      preLoaderRoute: typeof OurStoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-projects': {
+      id: '/our-projects'
+      path: '/our-projects'
+      fullPath: '/our-projects'
+      preLoaderRoute: typeof OurProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/media': {
+      id: '/media'
+      path: '/media'
+      fullPath: '/media'
+      preLoaderRoute: typeof MediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investors': {
+      id: '/investors'
+      path: '/investors'
+      fullPath: '/investors'
+      preLoaderRoute: typeof InvestorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investor-relations': {
+      id: '/investor-relations'
+      path: '/investor-relations'
+      fullPath: '/investor-relations'
+      preLoaderRoute: typeof InvestorRelationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/governance': {
+      id: '/governance'
+      path: '/governance'
+      fullPath: '/governance'
+      preLoaderRoute: typeof GovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/get-quote': {
+      id: '/get-quote'
+      path: '/get-quote'
+      fullPath: '/get-quote'
+      preLoaderRoute: typeof GetQuoteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/career': {
+      id: '/career'
+      path: '/career'
+      fullPath: '/career'
+      preLoaderRoute: typeof CareerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -99,14 +746,252 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/what-we-do_/products-and-services': {
+      id: '/what-we-do_/products-and-services'
+      path: '/what-we-do/products-and-services'
+      fullPath: '/what-we-do/products-and-services'
+      preLoaderRoute: typeof WhatWeDoProductsAndServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sustainability_/quality-hse-policy': {
+      id: '/sustainability_/quality-hse-policy'
+      path: '/sustainability/quality-hse-policy'
+      fullPath: '/sustainability/quality-hse-policy'
+      preLoaderRoute: typeof SustainabilityQualityHsePolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sustainability_/our-approach': {
+      id: '/sustainability_/our-approach'
+      path: '/sustainability/our-approach'
+      fullPath: '/sustainability/our-approach'
+      preLoaderRoute: typeof SustainabilityOurApproachRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sustainability_/energy-management': {
+      id: '/sustainability_/energy-management'
+      path: '/sustainability/energy-management'
+      fullPath: '/sustainability/energy-management'
+      preLoaderRoute: typeof SustainabilityEnergyManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sustainability_/corporate-social-responsibility': {
+      id: '/sustainability_/corporate-social-responsibility'
+      path: '/sustainability/corporate-social-responsibility'
+      fullPath: '/sustainability/corporate-social-responsibility'
+      preLoaderRoute: typeof SustainabilityCorporateSocialResponsibilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-story_/our-strategy': {
+      id: '/our-story_/our-strategy'
+      path: '/our-story/our-strategy'
+      fullPath: '/our-story/our-strategy'
+      preLoaderRoute: typeof OurStoryOurStrategyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-story_/our-milestone': {
+      id: '/our-story_/our-milestone'
+      path: '/our-story/our-milestone'
+      fullPath: '/our-story/our-milestone'
+      preLoaderRoute: typeof OurStoryOurMilestoneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-story_/mission-and-vision': {
+      id: '/our-story_/mission-and-vision'
+      path: '/our-story/mission-and-vision'
+      fullPath: '/our-story/mission-and-vision'
+      preLoaderRoute: typeof OurStoryMissionAndVisionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-story_/company-governance': {
+      id: '/our-story_/company-governance'
+      path: '/our-story/company-governance'
+      fullPath: '/our-story/company-governance'
+      preLoaderRoute: typeof OurStoryCompanyGovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-story_/ceo-message': {
+      id: '/our-story_/ceo-message'
+      path: '/our-story/ceo-message'
+      fullPath: '/our-story/ceo-message'
+      preLoaderRoute: typeof OurStoryCeoMessageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-story_/at-a-glance': {
+      id: '/our-story_/at-a-glance'
+      path: '/our-story/at-a-glance'
+      fullPath: '/our-story/at-a-glance'
+      preLoaderRoute: typeof OurStoryAtAGlanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-projects_/potable-water': {
+      id: '/our-projects_/potable-water'
+      path: '/our-projects/potable-water'
+      fullPath: '/our-projects/potable-water'
+      preLoaderRoute: typeof OurProjectsPotableWaterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-projects_/oil-and-gas': {
+      id: '/our-projects_/oil-and-gas'
+      path: '/our-projects/oil-and-gas'
+      fullPath: '/our-projects/oil-and-gas'
+      preLoaderRoute: typeof OurProjectsOilAndGasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news/$slug': {
+      id: '/news/$slug'
+      path: '/$slug'
+      fullPath: '/news/$slug'
+      preLoaderRoute: typeof NewsSlugRouteImport
+      parentRoute: typeof NewsRoute
+    }
+    '/investor-relations_/stock-information': {
+      id: '/investor-relations_/stock-information'
+      path: '/investor-relations/stock-information'
+      fullPath: '/investor-relations/stock-information'
+      preLoaderRoute: typeof InvestorRelationsStockInformationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investor-relations_/nominations': {
+      id: '/investor-relations_/nominations'
+      path: '/investor-relations/nominations'
+      fullPath: '/investor-relations/nominations'
+      preLoaderRoute: typeof InvestorRelationsNominationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investor-relations_/ir-resources': {
+      id: '/investor-relations_/ir-resources'
+      path: '/investor-relations/ir-resources'
+      fullPath: '/investor-relations/ir-resources'
+      preLoaderRoute: typeof InvestorRelationsIrResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investor-relations_/faqs': {
+      id: '/investor-relations_/faqs'
+      path: '/investor-relations/faqs'
+      fullPath: '/investor-relations/faqs'
+      preLoaderRoute: typeof InvestorRelationsFaqsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investor-relations_/disclaimer': {
+      id: '/investor-relations_/disclaimer'
+      path: '/investor-relations/disclaimer'
+      fullPath: '/investor-relations/disclaimer'
+      preLoaderRoute: typeof InvestorRelationsDisclaimerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investor-relations_/analyst-coverage': {
+      id: '/investor-relations_/analyst-coverage'
+      path: '/investor-relations/analyst-coverage'
+      fullPath: '/investor-relations/analyst-coverage'
+      preLoaderRoute: typeof InvestorRelationsAnalystCoverageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do_/products-and-services_/hsaw-pipes': {
+      id: '/what-we-do_/products-and-services_/hsaw-pipes'
+      path: '/what-we-do/products-and-services/hsaw-pipes'
+      fullPath: '/what-we-do/products-and-services/hsaw-pipes'
+      preLoaderRoute: typeof WhatWeDoProductsAndServicesHsawPipesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do_/products-and-services_/double-jointing': {
+      id: '/what-we-do_/products-and-services_/double-jointing'
+      path: '/what-we-do/products-and-services/double-jointing'
+      fullPath: '/what-we-do/products-and-services/double-jointing'
+      preLoaderRoute: typeof WhatWeDoProductsAndServicesDoubleJointingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do_/products-and-services_/coating': {
+      id: '/what-we-do_/products-and-services_/coating'
+      path: '/what-we-do/products-and-services/coating'
+      fullPath: '/what-we-do/products-and-services/coating'
+      preLoaderRoute: typeof WhatWeDoProductsAndServicesCoatingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do_/products-and-services_/ancillary-services': {
+      id: '/what-we-do_/products-and-services_/ancillary-services'
+      path: '/what-we-do/products-and-services/ancillary-services'
+      fullPath: '/what-we-do/products-and-services/ancillary-services'
+      preLoaderRoute: typeof WhatWeDoProductsAndServicesAncillaryServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-story_/leadership/executive-leadership': {
+      id: '/our-story_/leadership/executive-leadership'
+      path: '/our-story/leadership/executive-leadership'
+      fullPath: '/our-story/leadership/executive-leadership'
+      preLoaderRoute: typeof OurStoryLeadershipExecutiveLeadershipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-story_/leadership/bod': {
+      id: '/our-story_/leadership/bod'
+      path: '/our-story/leadership/bod'
+      fullPath: '/our-story/leadership/bod'
+      preLoaderRoute: typeof OurStoryLeadershipBodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
+
+interface NewsRouteChildren {
+  NewsSlugRoute: typeof NewsSlugRoute
+}
+
+const NewsRouteChildren: NewsRouteChildren = {
+  NewsSlugRoute: NewsSlugRoute,
+}
+
+const NewsRouteWithChildren = NewsRoute._addFileChildren(NewsRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CareerRoute: CareerRoute,
   ContactRoute: ContactRoute,
+  GetQuoteRoute: GetQuoteRoute,
+  GovernanceRoute: GovernanceRoute,
+  InvestorRelationsRoute: InvestorRelationsRoute,
+  InvestorsRoute: InvestorsRoute,
+  MediaRoute: MediaRoute,
+  NewsRoute: NewsRouteWithChildren,
+  OurProjectsRoute: OurProjectsRoute,
+  OurStoryRoute: OurStoryRoute,
   ProductsRoute: ProductsRoute,
+  ProjectsRoute: ProjectsRoute,
+  SolutionsRoute: SolutionsRoute,
+  SustainabilityRoute: SustainabilityRoute,
+  VendorsRoute: VendorsRoute,
+  WhatWeDoRoute: WhatWeDoRoute,
+  InvestorRelationsAnalystCoverageRoute: InvestorRelationsAnalystCoverageRoute,
+  InvestorRelationsDisclaimerRoute: InvestorRelationsDisclaimerRoute,
+  InvestorRelationsFaqsRoute: InvestorRelationsFaqsRoute,
+  InvestorRelationsIrResourcesRoute: InvestorRelationsIrResourcesRoute,
+  InvestorRelationsNominationsRoute: InvestorRelationsNominationsRoute,
+  InvestorRelationsStockInformationRoute:
+    InvestorRelationsStockInformationRoute,
+  OurProjectsOilAndGasRoute: OurProjectsOilAndGasRoute,
+  OurProjectsPotableWaterRoute: OurProjectsPotableWaterRoute,
+  OurStoryAtAGlanceRoute: OurStoryAtAGlanceRoute,
+  OurStoryCeoMessageRoute: OurStoryCeoMessageRoute,
+  OurStoryCompanyGovernanceRoute: OurStoryCompanyGovernanceRoute,
+  OurStoryMissionAndVisionRoute: OurStoryMissionAndVisionRoute,
+  OurStoryOurMilestoneRoute: OurStoryOurMilestoneRoute,
+  OurStoryOurStrategyRoute: OurStoryOurStrategyRoute,
+  SustainabilityCorporateSocialResponsibilityRoute:
+    SustainabilityCorporateSocialResponsibilityRoute,
+  SustainabilityEnergyManagementRoute: SustainabilityEnergyManagementRoute,
+  SustainabilityOurApproachRoute: SustainabilityOurApproachRoute,
+  SustainabilityQualityHsePolicyRoute: SustainabilityQualityHsePolicyRoute,
+  WhatWeDoProductsAndServicesRoute: WhatWeDoProductsAndServicesRoute,
+  OurStoryLeadershipBodRoute: OurStoryLeadershipBodRoute,
+  OurStoryLeadershipExecutiveLeadershipRoute:
+    OurStoryLeadershipExecutiveLeadershipRoute,
+  WhatWeDoProductsAndServicesAncillaryServicesRoute:
+    WhatWeDoProductsAndServicesAncillaryServicesRoute,
+  WhatWeDoProductsAndServicesCoatingRoute:
+    WhatWeDoProductsAndServicesCoatingRoute,
+  WhatWeDoProductsAndServicesDoubleJointingRoute:
+    WhatWeDoProductsAndServicesDoubleJointingRoute,
+  WhatWeDoProductsAndServicesHsawPipesRoute:
+    WhatWeDoProductsAndServicesHsawPipesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

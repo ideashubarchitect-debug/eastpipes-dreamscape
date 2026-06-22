@@ -73,19 +73,52 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Eastpipes" },
-      { name: "description", content: "Eastpipes NEOM Vision is a website designed to mirror the aesthetic and user experience of neom.com." },
+      {
+        name: "description",
+        content:
+          "Eastpipes NEOM Vision is a website designed to mirror the aesthetic and user experience of neom.com.",
+      },
       { name: "author", content: "Lovable" },
       { property: "og:title", content: "Eastpipes" },
-      { property: "og:description", content: "Eastpipes NEOM Vision is a website designed to mirror the aesthetic and user experience of neom.com." },
+      {
+        property: "og:description",
+        content:
+          "Eastpipes NEOM Vision is a website designed to mirror the aesthetic and user experience of neom.com.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "Eastpipes" },
-      { name: "twitter:description", content: "Eastpipes NEOM Vision is a website designed to mirror the aesthetic and user experience of neom.com." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b4f2c30c-7f43-4afd-ae7e-bc8979732c92/id-preview-7f3fd65b--c45c3c0c-f1b4-4d88-905e-f3c34934e938.lovable.app-1778480461655.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b4f2c30c-7f43-4afd-ae7e-bc8979732c92/id-preview-7f3fd65b--c45c3c0c-f1b4-4d88-905e-f3c34934e938.lovable.app-1778480461655.png" },
+      {
+        name: "twitter:description",
+        content:
+          "Eastpipes NEOM Vision is a website designed to mirror the aesthetic and user experience of neom.com.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b4f2c30c-7f43-4afd-ae7e-bc8979732c92/id-preview-7f3fd65b--c45c3c0c-f1b4-4d88-905e-f3c34934e938.lovable.app-1778480461655.png",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b4f2c30c-7f43-4afd-ae7e-bc8979732c92/id-preview-7f3fd65b--c45c3c0c-f1b4-4d88-905e-f3c34934e938.lovable.app-1778480461655.png",
+      },
     ],
     links: [
+      {
+        rel: "preconnect",
+        href: "https://fonts.googleapis.com",
+      },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Saira:wght@500;600;700;800&display=swap",
+      },
       {
         rel: "stylesheet",
         href: appCss,

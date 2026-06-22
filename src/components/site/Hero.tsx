@@ -56,27 +56,27 @@ export function Hero() {
         </div>
       ))}
 
-      <div className="relative z-10 h-full container-wide flex flex-col justify-end pb-28 md:pb-32">
+      <div className="relative z-10 h-full container-wide flex flex-col justify-end pt-44 pb-20 md:pb-24">
         <div key={i} className="max-w-3xl animate-fade-up">
-          <span className="inline-block text-xs md:text-sm uppercase tracking-[0.3em] text-brand font-medium mb-6">
+          <span className="inline-block text-xs md:text-sm uppercase tracking-[0.3em] text-brand font-medium mb-5">
             {slides[i].eyebrow}
           </span>
-          <h1 className="text-white text-5xl md:text-7xl lg:text-8xl font-semibold leading-[0.95] text-balance">
+          <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1] text-balance">
             {slides[i].title}
           </h1>
-          <p className="mt-8 text-white/80 text-lg md:text-xl max-w-xl leading-relaxed">
+          <p className="mt-6 text-white/80 text-base md:text-lg max-w-xl leading-relaxed">
             {slides[i].sub}
           </p>
           <Link
             to={slides[i].cta.to}
-            className="group mt-10 inline-flex items-center gap-3 text-white text-base font-medium border-b border-white/40 pb-2 hover:border-brand hover:text-brand transition"
+            className="group mt-8 inline-flex items-center gap-3 text-white text-base font-medium border-b border-white/40 pb-2 hover:border-brand hover:text-brand transition"
           >
             {slides[i].cta.label}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
 
-        <div className="mt-12 flex items-center gap-3">
+        <div className="mt-10 flex items-center gap-3">
           {slides.map((_, idx) => (
             <button
               key={idx}
