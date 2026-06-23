@@ -140,12 +140,10 @@ export const MEGA_MENU: MegaSection[] = [
   },
 ];
 
-export const SIMPLE_NAV: NavLink[] = [
-  { label: "Media", to: "/media" },
-  { label: "News", to: "/news" },
-];
+export const SIMPLE_NAV: NavLink[] = [{ label: "Media", to: "/media" }];
 
 export const UTILITY_NAV: NavLink[] = [
+  { label: "News", to: "/news" },
   { label: "Vendors", to: "/vendors" },
   { label: "Career", to: "/career" },
   { label: "Contact Us", to: "/contact" },

@@ -51,11 +51,17 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
               <Link
                 key={u.to}
                 to={to(u.to)}
-                className={solid ? "text-foreground/60 hover:text-brand" : "text-white/60 hover:text-white"}
+                className={`whitespace-nowrap ${solid ? "text-foreground/60 hover:text-brand" : "text-white/60 hover:text-white"}`}
               >
                 {u.label}
               </Link>
             ))}
+            <button
+              aria-label="Search"
+              className={`transition ${solid ? "text-foreground/60 hover:text-brand" : "text-white/60 hover:text-white"}`}
+            >
+              <Search className="h-3.5 w-3.5" />
+            </button>
             <button
               onClick={toggleLang}
               aria-label="Switch language"
@@ -78,7 +84,7 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
             <div key={m.label} onMouseEnter={() => setActive(idx)}>
               <Link
                 to={to(m.to)}
-                className={`flex items-center gap-1 text-sm font-medium uppercase tracking-wide py-2 transition-colors ${
+                className={`flex items-center gap-1 whitespace-nowrap text-sm font-medium uppercase tracking-wide py-2 transition-colors ${
                   solid ? "text-foreground/80 hover:text-brand" : "text-white/80 hover:text-white"
                 } ${active === idx ? "text-brand" : ""}`}
               >
@@ -92,7 +98,7 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
               key={n.to}
               to={to(n.to)}
               onMouseEnter={() => setActive(null)}
-              className={`text-sm font-medium uppercase tracking-wide py-2 transition-colors ${
+              className={`whitespace-nowrap text-sm font-medium uppercase tracking-wide py-2 transition-colors ${
                 solid ? "text-foreground/80 hover:text-brand" : "text-white/80 hover:text-white"
               }`}
             >
@@ -102,12 +108,6 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
         </nav>
 
         <div className="hidden xl:flex shrink-0 items-center gap-3">
-          <button
-            aria-label="Search"
-            className={`p-2 transition ${solid ? "text-foreground/70 hover:text-brand" : "text-white/80 hover:text-white"}`}
-          >
-            <Search className="h-4 w-4" />
-          </button>
           <Link
             to="/investor-relations"
             onMouseEnter={() => setActive(null)}
