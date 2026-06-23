@@ -1,4 +1,4 @@
-import banner from "@/assets/hero-banner.jpg";
+import banner from "@/assets/hero-banner.png";
 import spiral from "@/assets/spiral-mill.jpg";
 import lab from "@/assets/lab-quality.jpg";
 import interior from "@/assets/pipe-interior.jpg";

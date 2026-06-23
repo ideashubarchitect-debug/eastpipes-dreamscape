@@ -7,10 +7,10 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 import { Reveal } from "@/components/site/Reveal";
 import { Counter } from "@/components/site/Counter";
 import hero from "@/assets/welding-sparks.jpg";
-import p1 from "@/assets/hero-facility.jpg";
+import p1 from "@/assets/hero-facility.png";
 import p2 from "@/assets/spiral-mill.jpg";
 import p3 from "@/assets/pipe-interior.jpg";
-import p4 from "@/assets/hero-banner.jpg";
+import p4 from "@/assets/hero-banner.png";
 
 export const Route = createFileRoute("/our-projects")({
   head: () => ({

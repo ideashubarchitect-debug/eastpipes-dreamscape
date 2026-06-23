@@ -1,5 +1,5 @@
 import { Crosshair, Settings, ShieldCheck, TrendingUp } from "lucide-react";
-import manufacturing from "@/assets/hero-manufacturing.jpg";
+import manufacturing from "@/assets/hero-manufacturing.png";
 
 const pillars = [
   { icon: Crosshair, title: "Precision Manufacturing", desc: "Tolerances measured in microns, every joint engineered to perform." },

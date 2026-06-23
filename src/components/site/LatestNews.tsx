@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import welding from "@/assets/welding-sparks.jpg";
 import spiral from "@/assets/spiral-mill.jpg";
 import pipeInterior from "@/assets/pipe-interior.jpg";
-import banner from "@/assets/hero-banner.jpg";
+import banner from "@/assets/hero-banner.png";
 
 type Item = {
   tag: string;

@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
-import banner from "@/assets/hero-banner.jpg";
-import manufacturing from "@/assets/hero-manufacturing.jpg";
-import facility from "@/assets/hero-facility.jpg";
+import banner from "@/assets/hero-banner.png";
+import manufacturing from "@/assets/hero-manufacturing.png";
+import facility from "@/assets/hero-facility.png";
 
 const items = [
   {
