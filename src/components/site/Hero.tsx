@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import banner from "@/assets/hero-banner.jpg";
-import facility from "@/assets/hero-facility.jpg";
-import manufacturing from "@/assets/hero-manufacturing.jpg";
 
 const slides = [
   {
@@ -14,14 +12,14 @@ const slides = [
     cta: { label: "Discover our story", to: "/about" as const },
   },
   {
-    image: facility,
+    image: banner,
     eyebrow: "Engineering Excellence",
     title: "Engineering Strength. Building Tomorrow.",
     sub: "From the heart of Saudi Arabia to projects across the world — precision-engineered pipes built to perform for generations.",
     cta: { label: "Explore products", to: "/products" as const },
   },
   {
-    image: manufacturing,
+    image: banner,
     eyebrow: "Precision Manufacturing",
     title: "Crafted with Fire. Forged for Performance.",
     sub: "Advanced LSAW and HSAW manufacturing lines, certified to the world's most demanding standards.",

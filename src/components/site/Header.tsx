@@ -6,6 +6,7 @@ import logo from "@/assets/east-pipes-logo.png";
 import { StockTicker } from "./StockTicker";
 import { TickerTape } from "./TickerTape";
 import { MEGA_MENU, SIMPLE_NAV, UTILITY_NAV } from "@/lib/nav";
+import { useLanguage } from "@/hooks/use-language";
 
 type To = LinkProps["to"];
 const to = (p: string) => p as To;
@@ -15,6 +16,7 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<number | null>(null);
   const [mobileOpen, setMobileOpen] = useState<string | null>(null);
+  const { toggle: toggleLang, switchLabel } = useLanguage();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -54,21 +56,24 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
                 {u.label}
               </Link>
             ))}
-            <span className={`flex items-center gap-1.5 ${solid ? "text-foreground/60" : "text-white/60"}`}>
-              <Globe className="h-3 w-3" /> EN <span className="opacity-40">|</span>{" "}
-              <span className="opacity-60">عربي</span>
-            </span>
+            <button
+              onClick={toggleLang}
+              aria-label="Switch language"
+              className={`flex items-center gap-1.5 transition ${solid ? "text-foreground/60 hover:text-brand" : "text-white/60 hover:text-white"}`}
+            >
+              <Globe className="h-3 w-3" /> {switchLabel}
+            </button>
           </div>
         </div>
       </div>
 
       {/* Main bar */}
-      <div className="container-wide flex h-20 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
+      <div className="container-wide flex h-20 items-center justify-between gap-8">
+        <Link to="/" className="flex shrink-0 items-center gap-2">
           <img src={logo} alt="East Pipes" className={`h-9 w-auto transition ${solid ? "" : "brightness-0 invert"}`} />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hidden xl:flex items-center gap-7">
           {MEGA_MENU.map((m, idx) => (
             <div key={m.label} onMouseEnter={() => setActive(idx)}>
               <Link
@@ -96,7 +101,7 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden xl:flex shrink-0 items-center gap-3">
           <button
             aria-label="Search"
             className={`p-2 transition ${solid ? "text-foreground/70 hover:text-brand" : "text-white/80 hover:text-white"}`}
@@ -116,7 +121,7 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
         <button
           aria-label="Menu"
           onClick={() => setOpen((o) => !o)}
-          className={`lg:hidden p-2 ${solid ? "text-foreground" : "text-white"}`}
+          className={`xl:hidden p-2 ${solid ? "text-foreground" : "text-white"}`}
         >
           {open ? <X /> : <Menu />}
         </button>
@@ -124,7 +129,7 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
 
       {/* Mega panel */}
       {active !== null && (
-        <div className="hidden lg:block absolute inset-x-0 top-full border-b border-border bg-background shadow-xl">
+        <div className="hidden xl:block absolute inset-x-0 top-full border-b border-border bg-background shadow-xl">
           <div className="container-wide grid grid-cols-12 gap-10 py-10">
             {MEGA_MENU[active].feature && (
               <Link
@@ -166,7 +171,7 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
 
       {/* Mobile menu */}
       {open && (
-        <div className="lg:hidden max-h-[80vh] overflow-y-auto bg-background border-t border-border">
+        <div className="xl:hidden max-h-[80vh] overflow-y-auto bg-background border-t border-border">
           <div className="container-wide py-4">
             <Link to="/" onClick={() => setOpen(false)} className="block py-3 font-medium uppercase tracking-wide">
               Home
@@ -220,6 +225,12 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
             >
               Invest in East Pipes <ArrowUpRight className="h-4 w-4" />
             </Link>
+            <button
+              onClick={toggleLang}
+              className="mt-4 flex items-center gap-2 border-t border-border pt-4 text-sm font-medium text-foreground"
+            >
+              <Globe className="h-4 w-4" /> {switchLabel}
+            </button>
           </div>
         </div>
       )}
