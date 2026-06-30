@@ -3,7 +3,12 @@
  * Shared by the header mega menu and the footer.
  */
 
-export type NavLink = { label: string; to: string };
+export type NavLink = {
+  label: string;
+  to: string;
+  /** Short summary used by the consolidated "Explore" page sections. */
+  blurb?: string;
+};
 
 export type NavColumn = {
   heading: string;
@@ -32,19 +37,51 @@ export const MEGA_MENU: MegaSection[] = [
       {
         heading: "The Company",
         links: [
-          { label: "CEO Message", to: "/our-story/ceo-message" },
-          { label: "At a Glance", to: "/our-story/at-a-glance" },
-          { label: "Mission, Vision & Values", to: "/our-story/mission-and-vision" },
-          { label: "Our Milestone", to: "/our-story/our-milestone" },
-          { label: "Our Strategy", to: "/our-story/our-strategy" },
+          {
+            label: "CEO Message",
+            to: "/our-story/ceo-message",
+            blurb: "A word from our Chief Executive on the journey, the people and the road ahead.",
+          },
+          {
+            label: "At a Glance",
+            to: "/our-story/at-a-glance",
+            blurb: "The key facts, figures and capabilities that define East Pipes today.",
+          },
+          {
+            label: "Mission, Vision & Values",
+            to: "/our-story/mission-and-vision",
+            blurb: "The purpose and principles that guide how we build and how we work.",
+          },
+          {
+            label: "Our Milestone",
+            to: "/our-story/our-milestone",
+            blurb: "The defining moments in our growth from a single complex to a regional leader.",
+          },
+          {
+            label: "Our Strategy",
+            to: "/our-story/our-strategy",
+            blurb: "How we create long-term value through scale, integration and market focus.",
+          },
         ],
       },
       {
         heading: "Leadership & Governance",
         links: [
-          { label: "Board of Directors", to: "/our-story/leadership/bod" },
-          { label: "Executive Leadership", to: "/our-story/leadership/executive-leadership" },
-          { label: "Company Governance", to: "/our-story/company-governance" },
+          {
+            label: "Board of Directors",
+            to: "/our-story/leadership/bod",
+            blurb: "The board that sets our direction and safeguards shareholder interests.",
+          },
+          {
+            label: "Executive Leadership",
+            to: "/our-story/leadership/executive-leadership",
+            blurb: "The executive team running day-to-day operations across the business.",
+          },
+          {
+            label: "Company Governance",
+            to: "/our-story/company-governance",
+            blurb: "Our governance framework, policies and commitment to transparency.",
+          },
         ],
       },
     ],
@@ -61,15 +98,28 @@ export const MEGA_MENU: MegaSection[] = [
       {
         heading: "Products & Services",
         links: [
-          { label: "HSAW Pipes", to: "/what-we-do/products-and-services/hsaw-pipes" },
+          {
+            label: "HSAW Pipes",
+            to: "/what-we-do/products-and-services/hsaw-pipes",
+            blurb:
+              "Helical submerged-arc welded pipes engineered for water, oil and gas transmission.",
+          },
           {
             label: "Double Jointing (DJ)",
             to: "/what-we-do/products-and-services/double-jointing",
+            blurb:
+              "Double-jointing services that reduce field welds and accelerate pipeline installation.",
           },
-          { label: "Coating", to: "/what-we-do/products-and-services/coating" },
+          {
+            label: "Coating",
+            to: "/what-we-do/products-and-services/coating",
+            blurb:
+              "Internal and external coatings — FBE, 3LPE and cement lining — for long-life protection.",
+          },
           {
             label: "Ancillary Services",
             to: "/what-we-do/products-and-services/ancillary-services",
+            blurb: "Supporting services that complete our end-to-end pipeline offering.",
           },
         ],
       },
@@ -87,8 +137,17 @@ export const MEGA_MENU: MegaSection[] = [
       {
         heading: "Sectors",
         links: [
-          { label: "Oil & Gas", to: "/our-projects/oil-and-gas" },
-          { label: "Potable Water", to: "/our-projects/potable-water" },
+          {
+            label: "Oil & Gas",
+            to: "/our-projects/oil-and-gas",
+            blurb:
+              "Line pipe for oil and gas transmission, trusted by the region's largest operators.",
+          },
+          {
+            label: "Potable Water",
+            to: "/our-projects/potable-water",
+            blurb: "Large-diameter pipe for the Kingdom's water transmission mega-projects.",
+          },
         ],
       },
     ],
@@ -105,13 +164,26 @@ export const MEGA_MENU: MegaSection[] = [
       {
         heading: "Our Commitment",
         links: [
-          { label: "Our Approach", to: "/sustainability/our-approach" },
+          {
+            label: "Our Approach",
+            to: "/sustainability/our-approach",
+            blurb: "How sustainability is embedded across our operations and decision-making.",
+          },
           {
             label: "Corporate Social Responsibility",
             to: "/sustainability/corporate-social-responsibility",
+            blurb: "Our contribution to the communities and the people we work with.",
           },
-          { label: "Energy Management", to: "/sustainability/energy-management" },
-          { label: "Quality & HSE Policy", to: "/sustainability/quality-hse-policy" },
+          {
+            label: "Energy Management",
+            to: "/sustainability/energy-management",
+            blurb: "Initiatives to use energy efficiently and reduce our operational footprint.",
+          },
+          {
+            label: "Quality & HSE Policy",
+            to: "/sustainability/quality-hse-policy",
+            blurb: "Our standards for quality, health, safety and the environment.",
+          },
         ],
       },
     ],
@@ -128,12 +200,36 @@ export const MEGA_MENU: MegaSection[] = [
       {
         heading: "Investors",
         links: [
-          { label: "Stock Information", to: "/investor-relations/stock-information" },
-          { label: "Analyst Coverage", to: "/investor-relations/analyst-coverage" },
-          { label: "IR Resources", to: "/investor-relations/ir-resources" },
-          { label: "Nominations", to: "/investor-relations/nominations" },
-          { label: "FAQs", to: "/investor-relations/faqs" },
-          { label: "Disclaimer", to: "/investor-relations/disclaimer" },
+          {
+            label: "Stock Information",
+            to: "/investor-relations/stock-information",
+            blurb: "Live share price, performance and listing details for Tadawul: 1321.",
+          },
+          {
+            label: "Analyst Coverage",
+            to: "/investor-relations/analyst-coverage",
+            blurb: "Third-party analyst ratings and price targets covering East Pipes.",
+          },
+          {
+            label: "IR Resources",
+            to: "/investor-relations/ir-resources",
+            blurb: "Reports, presentations and documents for shareholders and analysts.",
+          },
+          {
+            label: "Nominations",
+            to: "/investor-relations/nominations",
+            blurb: "Board nomination information and related shareholder processes.",
+          },
+          {
+            label: "FAQs",
+            to: "/investor-relations/faqs",
+            blurb: "Answers to the questions investors ask us most often.",
+          },
+          {
+            label: "Disclaimer",
+            to: "/investor-relations/disclaimer",
+            blurb: "Important notices governing the use of our investor information.",
+          },
         ],
       },
     ],
@@ -148,3 +244,13 @@ export const UTILITY_NAV: NavLink[] = [
   { label: "Career", to: "/career" },
   { label: "Contact Us", to: "/contact" },
 ];
+
+/** Slug used by the consolidated Explore route, e.g. "/our-story" -> "our-story". */
+export function exploreSlug(section: MegaSection): string {
+  return section.to.replace(/^\//, "");
+}
+
+/** Find a mega-menu section by its Explore slug. */
+export function findSectionBySlug(slug: string): MegaSection | undefined {
+  return MEGA_MENU.find((m) => exploreSlug(m) === slug);
+}

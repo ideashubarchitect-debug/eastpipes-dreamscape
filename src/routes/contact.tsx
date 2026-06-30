@@ -1,10 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Anchor, Mail, MapPin, Phone, Send, Linkedin, Twitter, Facebook, Instagram } from "lucide-react";
+import {
+  Anchor,
+  Mail,
+  MapPin,
+  Phone,
+  Send,
+  Linkedin,
+  Twitter,
+  Facebook,
+  Instagram,
+  ArrowUpRight,
+} from "lucide-react";
 import { InfoPage, Section } from "@/components/site/InfoPage";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { Reveal } from "@/components/site/Reveal";
 import { EP_MEDIA } from "@/lib/media";
+import { LOCATIONS } from "@/lib/locations";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -31,7 +43,10 @@ const departments = [
 ];
 
 const socials = [
-  { icon: Linkedin, href: "https://www.linkedin.com/company/east-pipes-integrated-company-for-industry/" },
+  {
+    icon: Linkedin,
+    href: "https://www.linkedin.com/company/east-pipes-integrated-company-for-industry/",
+  },
   { icon: Twitter, href: "https://twitter.com/EastPipes" },
   { icon: Facebook, href: "#" },
   { icon: Instagram, href: "#" },
@@ -53,8 +68,12 @@ function Contact() {
               <Phone className="h-7 w-7 text-brand" />
               <div className="font-semibold text-foreground">Call us</div>
               <div className="text-muted-foreground">
-                <a href="tel:+966138616801" className="block hover:text-brand">+966 13 8616801</a>
-                <a href="tel:+966138616808" className="block hover:text-brand">+966 13 8616808</a>
+                <a href="tel:+966138616801" className="block hover:text-brand">
+                  +966 13 8616801
+                </a>
+                <a href="tel:+966138616808" className="block hover:text-brand">
+                  +966 13 8616808
+                </a>
               </div>
             </div>
           </Reveal>
@@ -63,8 +82,12 @@ function Contact() {
               <Mail className="h-7 w-7 text-brand" />
               <div className="font-semibold text-foreground">Email us</div>
               <div className="text-muted-foreground">
-                <a href="mailto:sales@eastpipes.com" className="block hover:text-brand">sales@eastpipes.com</a>
-                <a href="mailto:info@eastpipes.com" className="block hover:text-brand">info@eastpipes.com</a>
+                <a href="mailto:sales@eastpipes.com" className="block hover:text-brand">
+                  sales@eastpipes.com
+                </a>
+                <a href="mailto:info@eastpipes.com" className="block hover:text-brand">
+                  info@eastpipes.com
+                </a>
               </div>
             </div>
           </Reveal>
@@ -133,6 +156,55 @@ function Contact() {
         </div>
       </Section>
 
+      {/* Our locations */}
+      <Section>
+        <SectionHeading
+          eyebrow="Our Locations"
+          title="Find us on the map."
+          intro="Our head office and manufacturing plants in Dammam. Select any location to open it directly in Google Maps."
+        />
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {LOCATIONS.map((loc, i) => (
+            <Reveal key={loc.id} delay={((i % 3) + 1) as 1 | 2 | 3}>
+              <a
+                href={loc.mapsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="lift group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card"
+              >
+                <div className="relative h-48 w-full overflow-hidden">
+                  <iframe
+                    title={`East Pipes — ${loc.name}`}
+                    src={loc.embedUrl}
+                    className="pointer-events-none h-full w-full"
+                    style={{ border: 0 }}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col gap-2 p-6">
+                  <div className="text-xs uppercase tracking-widest text-brand">{loc.kind}</div>
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="font-semibold text-foreground">{loc.name}</div>
+                    <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:text-brand" />
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    {loc.address.map((line) => (
+                      <span key={line} className="block">
+                        {line}
+                      </span>
+                    ))}
+                  </p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 pt-2 text-sm font-medium text-brand">
+                    Open in Google Maps
+                  </span>
+                </div>
+              </a>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
       {/* Form + map */}
       <Section>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-stretch">
@@ -168,15 +240,24 @@ function Contact() {
             </form>
           </Reveal>
           <Reveal delay={1}>
-            <div className="h-full min-h-[360px] overflow-hidden rounded-2xl border border-border">
+            <div className="flex h-full min-h-[360px] flex-col overflow-hidden rounded-2xl border border-border">
               <iframe
-                title="East Pipes location"
-                src="https://www.google.com/maps?q=Second%20Industrial%20City%20Dammam%20Saudi%20Arabia&output=embed"
-                className="h-full w-full"
-                style={{ border: 0, minHeight: 360 }}
+                title="East Pipes — Head Office"
+                src={LOCATIONS[0].embedUrl}
+                className="w-full flex-1"
+                style={{ border: 0, minHeight: 300 }}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
+              <a
+                href={LOCATIONS[0].mapsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-between gap-2 border-t border-border bg-card px-5 py-4 text-sm font-medium text-foreground transition hover:text-brand"
+              >
+                Open Head Office in Google Maps
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
             </div>
           </Reveal>
         </div>

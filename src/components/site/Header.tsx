@@ -5,7 +5,7 @@ import { Menu, X, Globe, Search, ArrowUpRight, ChevronDown, Plus, Minus } from "
 import logo from "@/assets/east-pipes-logo.png";
 import { StockTicker } from "./StockTicker";
 import { TickerTape } from "./TickerTape";
-import { MEGA_MENU, SIMPLE_NAV, UTILITY_NAV } from "@/lib/nav";
+import { MEGA_MENU, SIMPLE_NAV, UTILITY_NAV, exploreSlug } from "@/lib/nav";
 import { useLanguage } from "@/hooks/use-language";
 
 type To = LinkProps["to"];
@@ -37,7 +37,9 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
       <TickerTape />
 
       {/* Utility bar */}
-      <div className={`hidden md:block border-b transition-colors ${solid ? "border-border" : "border-white/10"}`}>
+      <div
+        className={`hidden md:block border-b transition-colors ${solid ? "border-border" : "border-white/10"}`}
+      >
         <div className="container-wide flex h-9 items-center justify-between gap-6 text-[11px] uppercase tracking-widest">
           {solid ? (
             <StockTicker variant="bar" />
@@ -76,7 +78,11 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
       {/* Main bar */}
       <div className="container-wide flex h-20 items-center justify-between gap-8">
         <Link to="/" className="flex shrink-0 items-center gap-2">
-          <img src={logo} alt="East Pipes" className={`h-9 w-auto transition ${solid ? "" : "brightness-0 invert"}`} />
+          <img
+            src={logo}
+            alt="East Pipes"
+            className={`h-9 w-auto transition ${solid ? "" : "brightness-0 invert"}`}
+          />
         </Link>
 
         <nav className="hidden xl:flex items-center gap-7">
@@ -89,7 +95,9 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
                 } ${active === idx ? "text-brand" : ""}`}
               >
                 {m.label}
-                <ChevronDown className={`h-3.5 w-3.5 transition-transform ${active === idx ? "rotate-180" : ""}`} />
+                <ChevronDown
+                  className={`h-3.5 w-3.5 transition-transform ${active === idx ? "rotate-180" : ""}`}
+                />
               </Link>
             </div>
           ))}
@@ -133,14 +141,22 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
           <div className="container-wide grid grid-cols-12 gap-10 py-10">
             {MEGA_MENU[active].feature && (
               <Link
-                to={to(MEGA_MENU[active].feature!.to)}
+                to={to(`/explore/${exploreSlug(MEGA_MENU[active])}`)}
+                onClick={() => setActive(null)}
                 className="col-span-4 group rounded-2xl bg-ink p-8 text-white transition"
               >
-                <div className="text-xs uppercase tracking-[0.25em] text-brand">{MEGA_MENU[active].label}</div>
-                <div className="mt-4 text-2xl font-semibold">{MEGA_MENU[active].feature!.title}</div>
-                <p className="mt-3 text-sm leading-relaxed text-white/70">{MEGA_MENU[active].feature!.text}</p>
+                <div className="text-xs uppercase tracking-[0.25em] text-brand">
+                  {MEGA_MENU[active].label}
+                </div>
+                <div className="mt-4 text-2xl font-semibold">
+                  {MEGA_MENU[active].feature!.title}
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-white/70">
+                  {MEGA_MENU[active].feature!.text}
+                </p>
                 <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand">
-                  Explore <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  Explore all on one page{" "}
+                  <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
               </Link>
             )}
@@ -173,7 +189,11 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
       {open && (
         <div className="xl:hidden max-h-[80vh] overflow-y-auto bg-background border-t border-border">
           <div className="container-wide py-4">
-            <Link to="/" onClick={() => setOpen(false)} className="block py-3 font-medium uppercase tracking-wide">
+            <Link
+              to="/"
+              onClick={() => setOpen(false)}
+              className="block py-3 font-medium uppercase tracking-wide"
+            >
               Home
             </Link>
             {MEGA_MENU.map((m) => (
@@ -183,7 +203,11 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
                   className="flex w-full items-center justify-between py-3 font-medium uppercase tracking-wide"
                 >
                   {m.label}
-                  {mobileOpen === m.label ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+                  {mobileOpen === m.label ? (
+                    <Minus className="h-4 w-4" />
+                  ) : (
+                    <Plus className="h-4 w-4" />
+                  )}
                 </button>
                 {mobileOpen === m.label && (
                   <div className="pb-3">
@@ -194,16 +218,25 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
                     >
                       Overview
                     </Link>
-                    {m.columns.flatMap((c) => c.links).map((l) => (
-                      <Link
-                        key={l.to}
-                        to={to(l.to)}
-                        onClick={() => setOpen(false)}
-                        className="block py-2 pl-3 text-sm text-muted-foreground"
-                      >
-                        {l.label}
-                      </Link>
-                    ))}
+                    <Link
+                      to={to(`/explore/${exploreSlug(m)}`)}
+                      onClick={() => setOpen(false)}
+                      className="block py-2 pl-3 text-sm font-medium text-brand"
+                    >
+                      Explore all on one page
+                    </Link>
+                    {m.columns
+                      .flatMap((c) => c.links)
+                      .map((l) => (
+                        <Link
+                          key={l.to}
+                          to={to(l.to)}
+                          onClick={() => setOpen(false)}
+                          className="block py-2 pl-3 text-sm text-muted-foreground"
+                        >
+                          {l.label}
+                        </Link>
+                      ))}
                   </div>
                 )}
               </div>

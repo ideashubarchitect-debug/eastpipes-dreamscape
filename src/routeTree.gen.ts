@@ -47,6 +47,7 @@ import { Route as InvestorRelationsIrResourcesRouteImport } from './routes/inves
 import { Route as InvestorRelationsFaqsRouteImport } from './routes/investor-relations_.faqs'
 import { Route as InvestorRelationsDisclaimerRouteImport } from './routes/investor-relations_.disclaimer'
 import { Route as InvestorRelationsAnalystCoverageRouteImport } from './routes/investor-relations_.analyst-coverage'
+import { Route as ExploreSectionRouteImport } from './routes/explore.$section'
 import { Route as WhatWeDoProductsAndServicesHsawPipesRouteImport } from './routes/what-we-do_.products-and-services_.hsaw-pipes'
 import { Route as WhatWeDoProductsAndServicesDoubleJointingRouteImport } from './routes/what-we-do_.products-and-services_.double-jointing'
 import { Route as WhatWeDoProductsAndServicesCoatingRouteImport } from './routes/what-we-do_.products-and-services_.coating'
@@ -256,6 +257,11 @@ const InvestorRelationsAnalystCoverageRoute =
     path: '/investor-relations/analyst-coverage',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ExploreSectionRoute = ExploreSectionRouteImport.update({
+  id: '/explore/$section',
+  path: '/explore/$section',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WhatWeDoProductsAndServicesHsawPipesRoute =
   WhatWeDoProductsAndServicesHsawPipesRouteImport.update({
     id: '/what-we-do_/products-and-services_/hsaw-pipes',
@@ -311,6 +317,7 @@ export interface FileRoutesByFullPath {
   '/sustainability': typeof SustainabilityRoute
   '/vendors': typeof VendorsRoute
   '/what-we-do': typeof WhatWeDoRoute
+  '/explore/$section': typeof ExploreSectionRoute
   '/investor-relations/analyst-coverage': typeof InvestorRelationsAnalystCoverageRoute
   '/investor-relations/disclaimer': typeof InvestorRelationsDisclaimerRoute
   '/investor-relations/faqs': typeof InvestorRelationsFaqsRoute
@@ -357,6 +364,7 @@ export interface FileRoutesByTo {
   '/sustainability': typeof SustainabilityRoute
   '/vendors': typeof VendorsRoute
   '/what-we-do': typeof WhatWeDoRoute
+  '/explore/$section': typeof ExploreSectionRoute
   '/investor-relations/analyst-coverage': typeof InvestorRelationsAnalystCoverageRoute
   '/investor-relations/disclaimer': typeof InvestorRelationsDisclaimerRoute
   '/investor-relations/faqs': typeof InvestorRelationsFaqsRoute
@@ -404,6 +412,7 @@ export interface FileRoutesById {
   '/sustainability': typeof SustainabilityRoute
   '/vendors': typeof VendorsRoute
   '/what-we-do': typeof WhatWeDoRoute
+  '/explore/$section': typeof ExploreSectionRoute
   '/investor-relations_/analyst-coverage': typeof InvestorRelationsAnalystCoverageRoute
   '/investor-relations_/disclaimer': typeof InvestorRelationsDisclaimerRoute
   '/investor-relations_/faqs': typeof InvestorRelationsFaqsRoute
@@ -452,6 +461,7 @@ export interface FileRouteTypes {
     | '/sustainability'
     | '/vendors'
     | '/what-we-do'
+    | '/explore/$section'
     | '/investor-relations/analyst-coverage'
     | '/investor-relations/disclaimer'
     | '/investor-relations/faqs'
@@ -498,6 +508,7 @@ export interface FileRouteTypes {
     | '/sustainability'
     | '/vendors'
     | '/what-we-do'
+    | '/explore/$section'
     | '/investor-relations/analyst-coverage'
     | '/investor-relations/disclaimer'
     | '/investor-relations/faqs'
@@ -544,6 +555,7 @@ export interface FileRouteTypes {
     | '/sustainability'
     | '/vendors'
     | '/what-we-do'
+    | '/explore/$section'
     | '/investor-relations_/analyst-coverage'
     | '/investor-relations_/disclaimer'
     | '/investor-relations_/faqs'
@@ -591,6 +603,7 @@ export interface RootRouteChildren {
   SustainabilityRoute: typeof SustainabilityRoute
   VendorsRoute: typeof VendorsRoute
   WhatWeDoRoute: typeof WhatWeDoRoute
+  ExploreSectionRoute: typeof ExploreSectionRoute
   InvestorRelationsAnalystCoverageRoute: typeof InvestorRelationsAnalystCoverageRoute
   InvestorRelationsDisclaimerRoute: typeof InvestorRelationsDisclaimerRoute
   InvestorRelationsFaqsRoute: typeof InvestorRelationsFaqsRoute
@@ -886,6 +899,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InvestorRelationsAnalystCoverageRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/explore/$section': {
+      id: '/explore/$section'
+      path: '/explore/$section'
+      fullPath: '/explore/$section'
+      preLoaderRoute: typeof ExploreSectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/what-we-do_/products-and-services_/hsaw-pipes': {
       id: '/what-we-do_/products-and-services_/hsaw-pipes'
       path: '/what-we-do/products-and-services/hsaw-pipes'
@@ -960,6 +980,7 @@ const rootRouteChildren: RootRouteChildren = {
   SustainabilityRoute: SustainabilityRoute,
   VendorsRoute: VendorsRoute,
   WhatWeDoRoute: WhatWeDoRoute,
+  ExploreSectionRoute: ExploreSectionRoute,
   InvestorRelationsAnalystCoverageRoute: InvestorRelationsAnalystCoverageRoute,
   InvestorRelationsDisclaimerRoute: InvestorRelationsDisclaimerRoute,
   InvestorRelationsFaqsRoute: InvestorRelationsFaqsRoute,
