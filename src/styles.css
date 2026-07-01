@@ -39,9 +39,9 @@
   --radius: 0.5rem;
 
   /* East Pipes brand: deep navy + signature blue (approved home design) */
-  --brand: oklch(0.55 0.18 255);            /* signature blue */
+  --brand: oklch(0.55 0.18 255); /* signature blue */
   --brand-foreground: oklch(0.99 0 0);
-  --ink: oklch(0.18 0.04 255);              /* deep navy */
+  --ink: oklch(0.18 0.04 255); /* deep navy */
 
   --background: oklch(0.99 0.005 250);
   --foreground: oklch(0.18 0.04 255);
@@ -86,10 +86,25 @@
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
-  html, body { background-color: var(--color-background); color: var(--color-foreground); }
-  body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
-  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  * {
+    border-color: var(--color-border);
+  }
+  html,
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
 }
 
 @utility container-wide {
@@ -99,13 +114,15 @@
   max-width: 88rem;
 }
 
-@utility text-balance { text-wrap: balance; }
+@utility text-balance {
+  text-wrap: balance;
+}
 
 /* NEOM-style editorial display headings: large, uppercase, confident */
 @utility display-caps {
   text-transform: uppercase;
   letter-spacing: 0;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 0.95;
 }
 @utility eyebrow {
@@ -117,46 +134,80 @@
 
 /* Hero slide fade */
 @keyframes ken-burns {
-  0% { transform: scale(1.05); }
-  100% { transform: scale(1.18); }
+  0% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1.18);
+  }
 }
-.animate-ken-burns { animation: ken-burns 12s ease-out forwards; }
+.animate-ken-burns {
+  animation: ken-burns 12s ease-out forwards;
+}
 
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-.animate-fade-up { animation: fade-up 0.9s cubic-bezier(.2,.7,.2,1) both; }
+.animate-fade-up {
+  animation: fade-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
 
 /* ---- Scroll reveal design system ---- */
 .reveal {
   opacity: 0;
   transform: translateY(32px);
   transition:
-    opacity 0.9s cubic-bezier(.2, .7, .2, 1),
-    transform 0.9s cubic-bezier(.2, .7, .2, 1);
+    opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
   will-change: opacity, transform;
 }
 .reveal.is-visible {
   opacity: 1;
   transform: none;
 }
-.reveal-delay-1 { transition-delay: 0.08s; }
-.reveal-delay-2 { transition-delay: 0.16s; }
-.reveal-delay-3 { transition-delay: 0.24s; }
-.reveal-delay-4 { transition-delay: 0.32s; }
-.reveal-delay-5 { transition-delay: 0.4s; }
+.reveal-delay-1 {
+  transition-delay: 0.08s;
+}
+.reveal-delay-2 {
+  transition-delay: 0.16s;
+}
+.reveal-delay-3 {
+  transition-delay: 0.24s;
+}
+.reveal-delay-4 {
+  transition-delay: 0.32s;
+}
+.reveal-delay-5 {
+  transition-delay: 0.4s;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
   .animate-ken-burns,
-  .animate-fade-up { animation: none; }
+  .animate-fade-up {
+    animation: none;
+  }
 }
 
 /* ---- Marquee for stock ticker / partners ---- */
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 .animate-marquee {
   animation: marquee 40s linear infinite;
@@ -174,8 +225,8 @@
 }
 .bg-grid-dark {
   background-image:
-    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 64px 64px;
 }
 
@@ -191,8 +242,8 @@
 /* Card lift on hover */
 .lift {
   transition:
-    transform 0.45s cubic-bezier(.2, .7, .2, 1),
-    box-shadow 0.45s cubic-bezier(.2, .7, .2, 1),
+    transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
     border-color 0.45s ease;
   will-change: transform;
 }
@@ -202,12 +253,16 @@
 }
 
 /* Slow image zoom for editorial media */
-.media-zoom { overflow: hidden; }
+.media-zoom {
+  overflow: hidden;
+}
 .media-zoom img {
-  transition: transform 1.3s cubic-bezier(.2, .7, .2, 1);
+  transition: transform 1.3s cubic-bezier(0.2, 0.7, 0.2, 1);
   will-change: transform;
 }
-.media-zoom:hover img { transform: scale(1.06); }
+.media-zoom:hover img {
+  transform: scale(1.06);
+}
 
 /* Large editorial lede paragraph */
 @utility lede {
@@ -218,21 +273,31 @@
 
 /* Fluid display sizes for hero headlines */
 @utility text-display {
-  font-size: clamp(2.75rem, 1.8rem + 4.6vw, 6.5rem);
+  font-size: clamp(3.25rem, 2rem + 5.2vw, 7.5rem);
   line-height: 0.95;
 }
 @utility text-display-sm {
-  font-size: clamp(2rem, 1.4rem + 2.6vw, 3.75rem);
+  font-size: clamp(2.5rem, 1.7rem + 3.2vw, 4.75rem);
   line-height: 1;
 }
 
 /* Thin animated scroll cue */
 @keyframes scroll-cue {
-  0% { transform: translateY(0); opacity: 0; }
-  40% { opacity: 1; }
-  100% { transform: translateY(14px); opacity: 0; }
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(14px);
+    opacity: 0;
+  }
 }
-.scroll-cue span { animation: scroll-cue 1.8s ease-in-out infinite; }
+.scroll-cue span {
+  animation: scroll-cue 1.8s ease-in-out infinite;
+}
 
 /* Vertical accent bar */
 .accent-bar::before {
@@ -251,11 +316,17 @@
   background-size: 0% 1px;
   background-repeat: no-repeat;
   background-position: 0 100%;
-  transition: background-size 0.4s cubic-bezier(.2, .7, .2, 1);
+  transition: background-size 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-.link-underline:hover { background-size: 100% 1px; }
+.link-underline:hover {
+  background-size: 100% 1px;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .scroll-cue span { animation: none; }
-  .media-zoom img { transition: none; }
+  .scroll-cue span {
+    animation: none;
+  }
+  .media-zoom img {
+    transition: none;
+  }
 }

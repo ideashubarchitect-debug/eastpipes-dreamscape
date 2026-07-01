@@ -34,8 +34,6 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
       }`}
       onMouseLeave={() => setActive(null)}
     >
-      <TickerTape />
-
       {/* Utility bar */}
       <div
         className={`hidden md:block border-b transition-colors ${solid ? "border-border" : "border-white/10"}`}
@@ -75,6 +73,8 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
         </div>
       </div>
 
+      <TickerTape />
+
       {/* Main bar */}
       <div className="container-wide flex h-20 items-center justify-between gap-8">
         <Link to="/" className="flex shrink-0 items-center gap-2">
@@ -90,9 +90,15 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
             <div key={m.label} onMouseEnter={() => setActive(idx)}>
               <Link
                 to={to(m.to)}
-                className={`flex items-center gap-1 whitespace-nowrap text-sm font-medium uppercase tracking-wide py-2 transition-colors ${
+                className={`flex items-center gap-1 whitespace-nowrap rounded-md px-3 text-sm font-medium uppercase tracking-wide py-2 transition-colors ${
                   solid ? "text-foreground/80 hover:text-brand" : "text-white/80 hover:text-white"
-                } ${active === idx ? "text-brand" : ""}`}
+                } ${
+                  active === idx
+                    ? solid
+                      ? "bg-secondary text-brand font-semibold"
+                      : "bg-white/10 text-white font-semibold"
+                    : ""
+                }`}
               >
                 {m.label}
                 <ChevronDown
@@ -117,11 +123,11 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
 
         <div className="hidden xl:flex shrink-0 items-center gap-3">
           <Link
-            to="/investor-relations"
+            to="/contact"
             onMouseEnter={() => setActive(null)}
             className="group inline-flex items-center gap-1.5 rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-brand-foreground transition hover:bg-brand/90"
           >
-            Invest in East Pipes
+            Connect with our team
             <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         </div>
@@ -252,11 +258,11 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
               </Link>
             ))}
             <Link
-              to="/investor-relations"
+              to="/contact"
               onClick={() => setOpen(false)}
               className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-brand text-brand-foreground px-5 py-2.5 text-sm font-medium"
             >
-              Invest in East Pipes <ArrowUpRight className="h-4 w-4" />
+              Connect with our team <ArrowUpRight className="h-4 w-4" />
             </Link>
             <button
               onClick={toggleLang}

@@ -98,7 +98,7 @@ function Investors() {
           sub="A market-leading, publicly listed manufacturer at the heart of the Kingdom's water, energy and infrastructure ambitions — and a compelling long-term opportunity."
         >
           <a
-            href="#connect"
+            href="/contact"
             className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-brand-foreground transition hover:bg-brand/90"
           >
             Connect with our team <ArrowUpRight className="h-4 w-4" />

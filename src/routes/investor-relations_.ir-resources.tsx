@@ -14,24 +14,31 @@ export const Route = createFileRoute("/investor-relations_/ir-resources")({
       {
         name: "description",
         content:
-          "Investor relations resources — financial highlights, annual and quarterly reports, presentations, results, press releases and governance documents.",
+          "Investor relations resources — financial reports by year and governance documents for investors and analysts.",
       },
     ],
   }),
   component: IrResources,
 });
 
-const groups = [
+// Financial reports organised by year. Each year holds the three interim
+// quarters plus the Annual Report (Q4 is consolidated into the Annual Report).
+const FINANCIAL_YEARS = [
   {
-    icon: FileBarChart,
-    heading: "Financial Reports",
-    items: ["Annual Report", "Quarterly Consolidated Financials", "Financial Highlights", "Investor Report"],
+    year: "2026",
+    items: ["Q1 Interim Report", "Q2 Interim Report", "Q3 Interim Report", "Annual Report"],
   },
   {
-    icon: FileText,
-    heading: "Presentations & Results",
-    items: ["Earnings Presentation", "Corporate Presentation", "Results Announcements", "IPO Prospectus"],
+    year: "2025",
+    items: ["Q1 Interim Report", "Q2 Interim Report", "Q3 Interim Report", "Annual Report"],
   },
+  {
+    year: "2024",
+    items: ["Q1 Interim Report", "Q2 Interim Report", "Q3 Interim Report", "Annual Report"],
+  },
+];
+
+const docGroups = [
   {
     icon: ScrollText,
     heading: "Governance & Policies",
@@ -39,25 +46,65 @@ const groups = [
   },
 ];
 
+function DocCard({ item, delay }: { item: string; delay: 1 | 2 | 3 | 4 }) {
+  return (
+    <Reveal delay={delay}>
+      <a
+        href="#"
+        className="group lift flex h-full items-center justify-between gap-4 rounded-xl border border-border bg-card p-6 transition hover:border-brand/50"
+      >
+        <span className="flex items-center gap-3">
+          <FileText className="h-5 w-5 text-brand" />
+          <span className="font-medium text-foreground">{item}</span>
+        </span>
+        <Download className="h-5 w-5 text-muted-foreground transition group-hover:text-brand" />
+      </a>
+    </Reveal>
+  );
+}
+
 function IrResources() {
   return (
     <InfoPage
       image={EP_MEDIA.glance2}
       eyebrow="Investor Relations · Resources"
       title="Everything in one place."
-      sub="Financial reports, presentations, results and governance documents for investors and analysts."
+      sub="Financial reports by year and governance documents for investors and analysts."
       stats={[
         { value: "Reports", label: "Annual & quarterly" },
-        { value: "Results", label: "& presentations" },
         { value: "Governance", label: "& policies" },
         { value: "Tadawul 1321", label: "Disclosures" },
       ]}
     >
       <Section>
-        {groups.map((g, gi) => {
+        {/* Financial Reports — organised by year */}
+        <div className="flex items-center gap-4">
+          <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand">
+            <FileBarChart className="h-5 w-5" />
+          </span>
+          <SectionHeading eyebrow="Library" title="Financial Reports" />
+        </div>
+        <div className="mt-8 space-y-10">
+          {FINANCIAL_YEARS.map((y) => (
+            <div key={y.year}>
+              <div className="flex items-center gap-4">
+                <h3 className="text-xl font-semibold tabular-nums text-foreground">{y.year}</h3>
+                <span className="h-px flex-1 bg-border" />
+              </div>
+              <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                {y.items.map((item, i) => (
+                  <DocCard key={item} item={item} delay={((i % 4) + 1) as 1 | 2 | 3 | 4} />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Other document groups */}
+        {docGroups.map((g) => {
           const Icon = g.icon;
           return (
-            <div key={g.heading} className={gi > 0 ? "mt-14" : ""}>
+            <div key={g.heading} className="mt-14">
               <div className="flex items-center gap-4">
                 <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand">
                   <Icon className="h-5 w-5" />
@@ -66,23 +113,13 @@ function IrResources() {
               </div>
               <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                 {g.items.map((item, i) => (
-                  <Reveal key={item} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
-                    <a
-                      href="#"
-                      className="group lift flex h-full items-center justify-between gap-4 rounded-xl border border-border bg-card p-6 transition hover:border-brand/50"
-                    >
-                      <span className="flex items-center gap-3">
-                        <FileText className="h-5 w-5 text-brand" />
-                        <span className="font-medium text-foreground">{item}</span>
-                      </span>
-                      <Download className="h-5 w-5 text-muted-foreground transition group-hover:text-brand" />
-                    </a>
-                  </Reveal>
+                  <DocCard key={item} item={item} delay={((i % 4) + 1) as 1 | 2 | 3 | 4} />
                 ))}
               </div>
             </div>
           );
         })}
+
         <p className="mt-8 text-xs text-muted-foreground">
           Document links are placeholders. Connect to your document store or CMS to publish live
           files.
