@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { LISTING, QUOTE, type Quote } from "@/lib/market";
+import { getTadawulQuote } from "@/lib/tadawul";
 
 export type LiveQuote = Quote & {
   /** true when sourced from a live feed, false when using the static fallback */
@@ -31,6 +32,22 @@ export const getQuote = createServerFn({ method: "GET" }).handler(async (): Prom
     symbol: `${LISTING.exchangeShort}:${LISTING.ticker}`,
   };
 
+  // 1) Preferred source: official Tadawul feed (server-side, key from env).
+  try {
+    const tadawul = await getTadawulQuote();
+    if (tadawul?.price !== undefined) {
+      return {
+        ...QUOTE,
+        ...tadawul,
+        live: true,
+        symbol: `${LISTING.exchangeShort}:${LISTING.ticker}`,
+      };
+    }
+  } catch {
+    // fall through to the keyless source below
+  }
+
+  // 2) Fallback source: keyless Yahoo Finance chart endpoint.
   const url = process.env.MARKET_QUOTE_URL ?? DEFAULT_SOURCE;
 
   try {
