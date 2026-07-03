@@ -8,16 +8,23 @@
  *   Operation : getDetailQuoteForCompany(companyId, secureKey)
  *   Endpoint  : https://webservices.tadawul.com.sa/Tadawul_WebAPI/services/GetDetailQuote
  *
- * Credentials come from environment variables (never hard-coded):
- *   TADAWUL_SECURE_KEY  (required — enables the feed)
- *   TADAWUL_COMPANY_ID  (optional — defaults to the listing ticker, 1321)
- *   TADAWUL_API_URL     (optional — defaults to the endpoint above)
+ * Credentials: env vars take precedence; otherwise the values below (provided
+ * by the client) are used so the feed works without deployment config.
+ * NOTE: for production, prefer setting TADAWUL_SECURE_KEY as a Cloudflare secret
+ * and removing the inline default — this key lives in the repo source otherwise.
+ *   TADAWUL_SECURE_KEY  (secure key — defaults to the client-provided value)
+ *   TADAWUL_COMPANY_ID  (defaults to the listing ticker, 1321)
+ *   TADAWUL_API_URL     (defaults to the endpoint above)
  */
 
-import { LISTING, QUOTE, type Quote } from "@/lib/market";
+import { QUOTE, type Quote } from "@/lib/market";
 
 const DEFAULT_ENDPOINT =
   "https://webservices.tadawul.com.sa/Tadawul_WebAPI/services/GetDetailQuote";
+
+// Client-provided credentials, used when the matching env var is not set.
+const DEFAULT_SECURE_KEY = "948639304";
+const DEFAULT_COMPANY_ID = "1321";
 
 /** Extract a tag's text content, ignoring any namespace prefix. */
 function pick(xml: string, tag: string): string | undefined {
@@ -56,11 +63,10 @@ function buildEnvelope(companyId: string, secureKey: string): string {
  * can fall back gracefully.
  */
 export async function getTadawulQuote(): Promise<Partial<Quote> | null> {
-  const secureKey = process.env.TADAWUL_SECURE_KEY;
-  if (!secureKey) return null; // feed not configured — caller falls back
-
+  const secureKey = process.env.TADAWUL_SECURE_KEY ?? DEFAULT_SECURE_KEY;
+  const companyId = process.env.TADAWUL_COMPANY_ID ?? DEFAULT_COMPANY_ID;
   const url = process.env.TADAWUL_API_URL ?? DEFAULT_ENDPOINT;
-  const companyId = process.env.TADAWUL_COMPANY_ID ?? LISTING.ticker;
+  if (!secureKey) return null; // feed disabled — caller falls back
 
   const res = await fetch(url, {
     method: "POST",
