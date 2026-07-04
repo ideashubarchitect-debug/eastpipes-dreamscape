@@ -76,7 +76,7 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
       <TickerTape />
 
       {/* Main bar */}
-      <div className="container-wide flex h-20 items-center justify-between gap-8">
+      <div className="container-wide flex h-20 items-center justify-between gap-4">
         <Link to="/" className="flex shrink-0 items-center gap-2">
           <img
             src={logo}
@@ -85,12 +85,12 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
           />
         </Link>
 
-        <nav className="hidden xl:flex items-center gap-7">
+        <nav className="hidden min-[1400px]:flex items-center gap-4 2xl:gap-6">
           {MEGA_MENU.map((m, idx) => (
             <div key={m.label} onMouseEnter={() => setActive(idx)}>
               <Link
                 to={to(m.to)}
-                className={`flex items-center gap-1 whitespace-nowrap rounded-md px-3 text-sm font-medium uppercase tracking-wide py-2 transition-colors ${
+                className={`flex items-center gap-1 whitespace-nowrap rounded-md px-2 text-sm font-medium uppercase tracking-wide py-2 transition-colors ${
                   solid ? "text-foreground/80 hover:text-brand" : "text-white/80 hover:text-white"
                 } ${
                   active === idx
@@ -121,7 +121,7 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
           ))}
         </nav>
 
-        <div className="hidden xl:flex shrink-0 items-center gap-3">
+        <div className="hidden min-[1400px]:flex shrink-0 items-center gap-3">
           <Link
             to="/contact"
             onMouseEnter={() => setActive(null)}
@@ -135,7 +135,7 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
         <button
           aria-label="Menu"
           onClick={() => setOpen((o) => !o)}
-          className={`xl:hidden p-2 ${solid ? "text-foreground" : "text-white"}`}
+          className={`min-[1400px]:hidden p-2 ${solid ? "text-foreground" : "text-white"}`}
         >
           {open ? <X /> : <Menu />}
         </button>
@@ -143,7 +143,7 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
 
       {/* Mega panel */}
       {active !== null && (
-        <div className="hidden xl:block absolute inset-x-0 top-full border-b border-border bg-background shadow-xl">
+        <div className="hidden min-[1400px]:block absolute inset-x-0 top-full border-b border-border bg-background shadow-xl">
           <div className="container-wide grid grid-cols-12 gap-10 py-10">
             {MEGA_MENU[active].feature && (
               <Link
@@ -193,7 +193,7 @@ export function Header({ overlay = true }: { overlay?: boolean }) {
 
       {/* Mobile menu */}
       {open && (
-        <div className="xl:hidden max-h-[80vh] overflow-y-auto bg-background border-t border-border">
+        <div className="min-[1400px]:hidden max-h-[80vh] overflow-y-auto bg-background border-t border-border">
           <div className="container-wide py-4">
             <Link
               to="/"
