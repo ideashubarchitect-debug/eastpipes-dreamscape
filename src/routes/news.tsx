@@ -6,7 +6,8 @@ import { Footer } from "@/components/site/Footer";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { Reveal } from "@/components/site/Reveal";
-import { ARTICLES, NEWS_CATEGORIES } from "@/lib/news";
+import { ARTICLES, articleToNewsItem, announcementToNewsItem, type NewsItem } from "@/lib/news";
+import { getAnnouncements } from "@/lib/announcements";
 import hero from "@/assets/welding-sparks.jpg";
 
 export const Route = createFileRoute("/news")({
@@ -20,13 +21,24 @@ export const Route = createFileRoute("/news")({
       },
     ],
   }),
+  // Prefer live Tadawul announcements; fall back to managed articles when the
+  // feed returns no populated announcements (its current state).
+  loader: async (): Promise<{ items: NewsItem[]; live: boolean }> => {
+    const live = await getAnnouncements();
+    if (live.length > 0) {
+      return { items: live.map(announcementToNewsItem), live: true };
+    }
+    return { items: ARTICLES.map(articleToNewsItem), live: false };
+  },
   component: News,
 });
 
 function News() {
-  const [filter, setFilter] = useState<(typeof NEWS_CATEGORIES)[number]>("All");
-  const featured = ARTICLES.find((a) => a.featured) ?? ARTICLES[0];
-  const rest = ARTICLES.filter((a) => a.slug !== featured.slug);
+  const { items } = Route.useLoaderData();
+  const categories = ["All", ...Array.from(new Set(items.map((a) => a.category)))];
+  const [filter, setFilter] = useState<string>("All");
+  const featured = items[0];
+  const rest = items.slice(1);
   const visible = filter === "All" ? rest : rest.filter((a) => a.category === filter);
 
   return (
@@ -43,7 +55,7 @@ function News() {
         {/* Filters */}
         <section className="border-b border-border py-6">
           <div className="container-wide flex flex-wrap gap-2">
-            {NEWS_CATEGORIES.map((c) => (
+            {categories.map((c) => (
               <button
                 key={c}
                 onClick={() => setFilter(c)}
@@ -60,7 +72,7 @@ function News() {
         </section>
 
         {/* Featured */}
-        {filter === "All" && (
+        {filter === "All" && featured && (
           <section className="py-16 md:py-20">
             <div className="container-wide">
               <Reveal>

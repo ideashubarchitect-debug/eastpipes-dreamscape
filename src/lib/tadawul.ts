@@ -58,11 +58,11 @@ function buildEnvelope(companyId: string, secureKey: string): string {
 }
 
 /**
- * Fetches the live detail quote from Tadawul and maps it to our Quote shape.
- * Returns null when the feed is not configured or the call fails, so callers
- * can fall back gracefully.
+ * Performs the shared SOAP call and returns the raw response XML, or null when
+ * the feed is disabled, unreachable, or reports a fault. Both the quote and the
+ * announcements are carried in this single response.
  */
-export async function getTadawulQuote(): Promise<Partial<Quote> | null> {
+async function fetchDetailQuoteXml(): Promise<string | null> {
   const secureKey = process.env.TADAWUL_SECURE_KEY ?? DEFAULT_SECURE_KEY;
   const companyId = process.env.TADAWUL_COMPANY_ID ?? DEFAULT_COMPANY_ID;
   const url = process.env.TADAWUL_API_URL ?? DEFAULT_ENDPOINT;
@@ -82,6 +82,17 @@ export async function getTadawulQuote(): Promise<Partial<Quote> | null> {
   const xml = await res.text();
   // SOAP fault or application exception — treat as unavailable.
   if (/<(?:\w+:)?Fault\b|faultstring|ApplicationException/i.test(xml)) return null;
+  return xml;
+}
+
+/**
+ * Fetches the live detail quote from Tadawul and maps it to our Quote shape.
+ * Returns null when the feed is not configured or the call fails, so callers
+ * can fall back gracefully.
+ */
+export async function getTadawulQuote(): Promise<Partial<Quote> | null> {
+  const xml = await fetchDetailQuoteXml();
+  if (!xml) return null;
 
   const price = toNum(pick(xml, "lastTradePrice"));
   if (price === undefined) return null;
@@ -106,4 +117,76 @@ export async function getTadawulQuote(): Promise<Partial<Quote> | null> {
     marketCap: marketCapMillions !== undefined ? marketCapMillions / 1000 : QUOTE.marketCap,
     updatedAt: lastUpdate ? `Tadawul · ${lastUpdate}` : "Tadawul · live",
   };
+}
+
+/** A single company announcement as returned by the Tadawul feed. */
+export type TadawulAnnouncement = {
+  date: string; // e.g. "2026-06-12"
+  time: string; // e.g. "10:41:43"
+  title: string; // short description (English)
+  titleAr: string; // short description (Arabic)
+  body: string; // full announcement text (English)
+  bodyAr: string; // full announcement text (Arabic)
+};
+
+/** Decodes XML/HTML entities, including the numeric refs Tadawul uses for Arabic. */
+function decodeEntities(input: string): string {
+  return input
+    .replace(/&#x([0-9a-f]+);/gi, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)))
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&amp;/g, "&")
+    .trim();
+}
+
+/**
+ * Fetches company announcements from the same Tadawul detail-quote response.
+ *
+ * The feed nests them under <company_Announcents> as <Announcement> elements.
+ * Empty slots arrive as <Announcement xsi:nil="true"/> and are skipped, so an
+ * empty array is returned when the feed carries no populated announcements
+ * (which is the case when the subscription returns quotes only).
+ */
+export async function getTadawulAnnouncements(): Promise<TadawulAnnouncement[]> {
+  const xml = await fetchDetailQuoteXml();
+  if (!xml) return [];
+
+  // Isolate the announcements container to avoid matching unrelated tags.
+  const container = xml.match(
+    /<(?:[\w-]+:)?company_Announcents\b[^>]*>([\s\S]*?)<\/(?:[\w-]+:)?company_Announcents>/i,
+  )?.[1];
+  if (!container) return [];
+
+  // Match each populated <Announcement>…</Announcement> block. Self-closing nil
+  // entries (<Announcement xsi:nil="true"/>) have no closing tag and are ignored.
+  const blocks = container.match(
+    /<(?:[\w-]+:)?Announcement\b[^>]*>[\s\S]*?<\/(?:[\w-]+:)?Announcement>/gi,
+  );
+  if (!blocks) return [];
+
+  const out: TadawulAnnouncement[] = [];
+  for (const block of blocks) {
+    const date = pick(block, "announcement_Date");
+    const time = pick(block, "announcement_Time");
+    const title = pick(block, "description");
+    const titleAr = pick(block, "description_ar");
+    const body = pick(block, "longDescription");
+    const bodyAr = pick(block, "longDescription_ar");
+
+    // Skip entries with no meaningful content.
+    if (!title && !body && !titleAr && !bodyAr) continue;
+
+    out.push({
+      date: date ? decodeEntities(date) : "",
+      time: time ? decodeEntities(time) : "",
+      title: title ? decodeEntities(title) : "",
+      titleAr: titleAr ? decodeEntities(titleAr) : "",
+      body: body ? decodeEntities(body) : "",
+      bodyAr: bodyAr ? decodeEntities(bodyAr) : "",
+    });
+  }
+  return out;
 }

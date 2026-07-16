@@ -182,3 +182,89 @@ export function getRelated(slug: string, limit = 3): Article[] {
     .sort((a, b) => (a.category === current.category ? -1 : 0))
     .slice(0, limit);
 }
+
+/* ------------------------------------------------------------------ *
+ * Unified news model
+ *
+ * The News page renders either live Tadawul announcements (when the feed
+ * returns populated entries) or the managed articles above (fallback). Both are
+ * adapted into this single NewsItem shape so the UI has one thing to render.
+ * ------------------------------------------------------------------ */
+
+export type NewsBlock = { type: "p" | "h2" | "quote"; text: string };
+
+export type NewsItem = {
+  slug: string;
+  img: string;
+  category: string;
+  date: string; // display date
+  iso: string; // for sorting / <time>
+  title: string;
+  excerpt: string;
+  body: NewsBlock[];
+  source: "tadawul" | "managed";
+};
+
+/** Raw live announcement shape returned by the getAnnouncements server fn. */
+export type LiveAnnouncement = {
+  slug: string;
+  iso: string; // "2026-06-12"
+  time: string; // "10:41:43"
+  title: string;
+  body: string; // full announcement text
+};
+
+/** Deterministic image so announcements (which carry no image) look consistent. */
+const NEWS_IMAGES = [banner, spiral, lab, interior];
+
+function imageForSlug(slug: string): string {
+  let h = 0;
+  for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) >>> 0;
+  return NEWS_IMAGES[h % NEWS_IMAGES.length];
+}
+
+/** "2026-06-12" -> "12 Jun 2026"; passes through anything unparseable. */
+export function formatDisplayDate(iso: string): string {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso);
+  if (!m) return iso;
+  const d = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+  if (Number.isNaN(d.getTime())) return iso;
+  return d.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+}
+
+export function articleToNewsItem(a: Article): NewsItem {
+  return {
+    slug: a.slug,
+    img: a.img,
+    category: a.category,
+    date: a.date,
+    iso: a.iso,
+    title: a.title,
+    excerpt: a.excerpt,
+    body: a.body,
+    source: "managed",
+  };
+}
+
+export function announcementToNewsItem(a: LiveAnnouncement): NewsItem {
+  const paragraphs = a.body
+    .split(/\n{2,}|\r\n{2,}/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+  const body: NewsBlock[] = (paragraphs.length ? paragraphs : [a.body || a.title]).map((text) => ({
+    type: "p" as const,
+    text,
+  }));
+  const flat = a.body.replace(/\s+/g, " ").trim();
+  return {
+    slug: a.slug,
+    img: imageForSlug(a.slug),
+    category: "Announcement",
+    date: formatDisplayDate(a.iso),
+    iso: a.iso,
+    title: a.title,
+    excerpt: flat.length > 200 ? `${flat.slice(0, 200)}…` : flat || a.title,
+    body,
+    source: "tadawul",
+  };
+}

@@ -3,13 +3,35 @@ import { ArrowLeft, ArrowUpRight, Linkedin, Share2 } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
-import { getArticle, getRelated } from "@/lib/news";
+import {
+  getArticle,
+  getRelated,
+  articleToNewsItem,
+  announcementToNewsItem,
+  type NewsItem,
+} from "@/lib/news";
+import { getAnnouncements } from "@/lib/announcements";
 
 export const Route = createFileRoute("/news/$slug")({
-  loader: ({ params }) => {
+  // Resolve live Tadawul announcements first; fall back to managed articles.
+  loader: async ({ params }): Promise<{ article: NewsItem; related: NewsItem[] }> => {
+    const live = await getAnnouncements();
+    if (live.length > 0) {
+      const items = live.map(announcementToNewsItem);
+      const found = items.find((i) => i.slug === params.slug);
+      if (found) {
+        return {
+          article: found,
+          related: items.filter((i) => i.slug !== found.slug).slice(0, 3),
+        };
+      }
+    }
     const article = getArticle(params.slug);
     if (!article) throw notFound();
-    return { article, related: getRelated(params.slug) };
+    return {
+      article: articleToNewsItem(article),
+      related: getRelated(params.slug).map(articleToNewsItem),
+    };
   },
   head: ({ loaderData }) => ({
     meta: loaderData
